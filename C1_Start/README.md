@@ -40,6 +40,7 @@ Web一般是用浏览器来看，所以用不到什么编译器，那么像Ultra
 jQuery是一个家喻户晓的JS库，大家一般不太喜欢直面JS原生代码，使用jQuery会方便很多。大家都在用，不用担心冷门什么的，而且也不会影响对WebGL知识的学习。
 
 jQuery官网：http://jquery.com/
+
 jQuery开源主页：https://github.com/jquery/jquery
 
 可以在自己WebGL代码页面的最顶端加上一行
