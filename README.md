@@ -26,6 +26,7 @@ Canvas是一个HTML元素，用 JavaScript来进行操作。所以开发WebGL主
 * 不必担心对Web相关领域的陌生，毕竟那不是重点，也不会成为学习WebGL过程中的难点。
 * WebGL的学习过程和OpenGL是相似相通的，所以也不必担心是否需要OpenGL的基础知识
 
+### 学习思路
 
 这本WebGL学习开始是跟着“Learning WebGL”走的，后面是否会按自己的思路来现在还不知道，可以先把这本书理解为“[Learning WebGL](http://learningwebgl.com)”的中文版，他的网站是：http://learningwebgl.com。
 
