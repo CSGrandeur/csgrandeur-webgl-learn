@@ -1,4 +1,4 @@
-# CSGrandeur's WebGL-Learn
+# CSGrandeur的WebGL学习
 ## **简介**
 ### WebGL是什么
 网上查定义很容易，这就不说官话了。
