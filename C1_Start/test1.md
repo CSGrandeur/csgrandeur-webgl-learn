@@ -208,7 +208,7 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
 	}
 </script>
 ```
-为了方便，我们也把GLSL的代码写到页面里了，但是用<script>圈了起来，不然的话HTML会把这些代码直接显示到页面的。我们这一节的WebGL代码是写在类似的一个<script>里，这几行<script>包围的GLSL代码要和WebGL代码并列写在主题代码<script></script>外面，具体参考本节末尾的完整代码。
+为了方便，我们也把GLSL的代码写到页面里了，但是用&lt;script&gt;圈了起来，不然的话HTML会把这些代码直接显示到页面的。我们这一节的WebGL代码是写在类似的一个&lt;script&gt;里，这几行&lt;script&gt;包围的GLSL代码要和WebGL代码并列写在主题代码&lt;script&gt;&lt;/script&gt;外面，具体参考本节末尾的完整代码。
 
 上面就是基础功能的片段着色器（fragment shader）和顶点着色器（vertex shader）。shader不一定要以这种形式保存，其实我们的GLSL代码可以写在某个变量里，别的控件里，单独的文件里，甚至别人的网站里。。。只要WebGL在链接shader的时候，能用自己的方法能拿到整个GLSL代码的字符串就可以。
 
