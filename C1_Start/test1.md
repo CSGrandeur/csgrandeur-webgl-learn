@@ -121,7 +121,7 @@ function initBuffers()
 ```javascript
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 ```
-前面已经绑定了ARRAY_BUFFER，这里把定义的三角形顶点坐标数组告诉它，也就是告诉了triangleVertexPositionBuffer。第三个参数STATIC_DRAW理解为“这数据的用途”，Float32Array和STATIC_DRAW这里先直接用，以后再解释。
+前面已经绑定了buffer，这里把定义的三角形顶点坐标数组告诉gl.ARRAY_BUFFER，也就是告诉了triangleVertexPositionBuffer。第三个参数STATIC_DRAW理解为“这数据的用途”，Float32Array和STATIC_DRAW这里先直接用，以后再解释。
 ```javascript
 	triangleVertexPositionBuffer.itemSize = 3;
 	triangleVertexPositionBuffer.numItems = 3;
