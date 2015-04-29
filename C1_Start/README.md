@@ -52,4 +52,4 @@ jQuery开源主页：https://github.com/jquery/jquery
 
 
 
-好，我们开始吧 ![](./image/general/lovelysmile.png)
+好，我们开始吧 ![](image/general/lovelysmile.png)
