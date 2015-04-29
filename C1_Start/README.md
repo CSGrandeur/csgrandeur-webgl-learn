@@ -44,10 +44,9 @@ jQuery官网：http://jquery.com/
 jQuery开源主页：https://github.com/jquery/jquery
 
 可以在自己WebGL代码页面的最顶端加上一行
-
-<span style="color:#0000ff;">&lt;script</span><span style="color:#000000;">&nbsp;</span><span style="color:#0000ff;">src</span><span style="color:#000000;">=</span><span style="color:#800000;">"jquery.min.js"</span><span style="color:#000000;">&nbsp;</span><span style="color:#0000ff;">type</span><span style="color:#000000;">=</span><span style="color:#800000;">"text/javascript"</span><span style="color:#0000ff;">&gt;&lt;/script&gt;</span>
-
-
+```html
+<script src="jquery.min.js" type="text/javascript"></script>
+```
 
 
 
