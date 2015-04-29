@@ -24,7 +24,7 @@ HTML文件中插入JS代码，需要先加入标签，JS代码写在标签下面
 ```html
 </script>
 ```
-好，jS代码开始。
+好，JS代码开始。
 ```javascript
 $(document).ready(function ()
 {
