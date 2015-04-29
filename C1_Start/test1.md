@@ -86,7 +86,7 @@ function initGL(canvas)
 
 canvas在入口里已经获取到了，canvas.getContext来拿到它的“内容”给gl画，之后gl无论画什么，都是在这个canvas的画布上。参数用了“experimental-webgl”和“webgl”并通过或运算连起来，因为webgl标准存在一个“实验阶段”，要通过“experimental-webgl”来获取内容，我现在直接只用“webgl”就可以，不过为了兼容性和其他不确定问题，两个都写上总保险些。
 
-获取canvas的宽高，让gl“随身携带”，后面会用到这两个数据来设置视野。
+获取canvas的宽高，让gl“随身携带”，后面会用到这两个数据来设置视口。
 
 
 ###设置要画的内容
