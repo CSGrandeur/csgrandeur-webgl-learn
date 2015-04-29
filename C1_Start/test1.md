@@ -183,6 +183,8 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
     调整一个步骤的具体任务，需要用GPU看得懂的方式来表达，这就是着色器语言（GLSL）。别害怕，这并不是说我们又要马上接触一门好陌生的语言。幸运的是GLSL长的跟C语言真像，写起来和C语言一个手感哦~~在学习的过程中我们会慢慢来了解它具体的特性
 
     着色器一般对应英文中的“shader”这个词。
+    
+    WebGL主要是片段着色器（fragment）和顶点着色器（vertex）这俩，用着用着我们就会熟悉它们分别做什么的了。
 
     打个简单的比方：
     
@@ -214,4 +216,38 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
 
 shader不一定要以这种形式保存，其实我们的GLSL代码可以写在某个变量里，别的控件里，单独的文件里，甚至别人的网站里。。。只要WebGL在链接shader的时候，能用自己的方法能拿到整个GLSL代码的字符串就可以。
 
-
+我们这里把shader直接写在页面里，要写一个对应的方法在WebGL运行时拿到这些代码的字符串。
+```javascript
+function getShader(gl, id)
+{
+	var shaderScript = $("#" + id);
+	if(!shaderScript.length)
+	{
+		return null;
+	}
+	var str = shaderScript.text();
+	
+	var shader;
+	if(shaderScript[0].type == "x-shader/x-fragment")
+	{
+		shader = gl.createShader(gl.FRAGMENT_SHADER);
+	}
+	else if(shaderScript[0].type == "x-shader/x-vertex")
+	{
+		shader = gl.createShader(gl.VERTEX_SHADER);
+	}
+	else
+	{
+		return null;
+	}
+	gl.shaderSource(shader, str);
+	gl.compileShader(shader);
+	if(!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
+	{
+		alert(gl.getShaderInfoLog(shader));
+		return null;
+	}
+	return shader;
+}
+```
+两个参数，一个是我们之前说过的gl，另一个是页面里那两个保存着shader代码（GLSL）的控件的id，“shader-fs”或“shader-vs”，于是用jQuery取得控件，判断有没有“扑个空”，获取内部字符串（GLSL代码），判断控件的type标签是fragment还是vertex（id和标签都是自己定义的，对应上就好）
