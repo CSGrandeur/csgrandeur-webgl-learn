@@ -306,7 +306,7 @@ function setMatrixUniforms()
 	gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
 }
 ```
-前面让shaderProgram随身携带shader中uniform变量的位置，这里通过gl.uniformMatrix4fv把JS中我们定义的两个矩阵与GLSL中的对应变量绑定了，这样GPU就能得到我们在CPU中（执行JS代码）为两个矩准备的值。
+前面让shaderProgram随身携带shader中uniform变量的位置，这里通过gl.uniformMatrix4fv把JS中我们定义的两个矩阵与GLSL中的对应变量绑定了，这样GPU就能得到我们在CPU中（执行JS代码）为两个矩阵准备的值。
 ```javascript
 function drawScene()
 {
