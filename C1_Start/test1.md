@@ -184,7 +184,7 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
 
     着色器一般对应英文中的“shader”这个词。
     
-    WebGL主要是片段着色器（fragment）和顶点着色器（vertex）这俩，用着用着我们就会熟悉它们分别做什么的了。
+    WebGL主要是片段着色器（fragment）和顶点着色器（vertex）这俩，用着用着，结合它们的名字我们就会熟悉它们分别做什么的了。
 
     打个简单的比方：
     
