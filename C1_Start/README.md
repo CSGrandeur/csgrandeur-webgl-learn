@@ -47,8 +47,21 @@ jQuery开源主页：https://github.com/jquery/jquery
 ```html
 <script src="jquery.min.js" type="text/javascript"></script>
 ```
+当然src=要加上能找到jquery.min.js文件的相对路径。
 
+也可以用CDN：
+```html
+<script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+```
+用CDN的前提是查看网页的这台电脑要联网。
+#### gl-matrix
+做GL会涉及很多图形变换，在计算机中对坐标的变换是通过矩阵来实现的，比如可以去了解一下仿射变换。WebGL并没有集成矩阵的运算，我们专注WebGL的学习，没有必要一开始花费太多精力去写矩阵操作，轮子造好了，请享用。
 
+gl-matrix开源主页：https://github.com/toji/gl-matrix
 
+同样在页面顶端加入
+```html
+<script src="gl-matrix-min.js" type="text/javascript"></script>
+```
 
 好，我们开始吧 ![](../image/general/lovelysmile.png)
