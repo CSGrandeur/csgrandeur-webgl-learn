@@ -183,15 +183,15 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
     调整一个步骤的具体任务，需要用GPU看得懂的方式来表达，这就是着色器语言（GLSL）。别害怕，这并不是说我们又要马上接触一门好陌生的语言。幸运的是GLSL长的跟C语言真像，写起来和C语言一个手感哦~~在学习的过程中我们会慢慢来了解它具体的特性
 
     着色器一般对应英文中的“shader”这个词。
-    
+
     WebGL主要是片段着色器（fragment）和顶点着色器（vertex）这俩，用着用着，结合它们的名字我们就会熟悉它们分别做什么的了。
 
     打个简单的比方：
-    
+
     三个点的坐标->全部沿x轴左平移5->全部涂成红色->输出
-    
+
     这就是一条渲染管线了，中间的两个操作对应两个不同功能的shader。
-    
+
 
 好，回到这一节的代码，我们现在要告诉显卡怎么“画”，三步走：写自己的shader，把写好的shader按流水线连起来，告诉显卡。
 ```c
@@ -226,7 +226,7 @@ function getShader(gl, id)
 		return null;
 	}
 	var str = shaderScript.text();
-	
+
 	var shader;
 	if(shaderScript[0].type == "x-shader/x-fragment")
 	{
@@ -250,4 +250,52 @@ function getShader(gl, id)
 	return shader;
 }
 ```
-两个参数，一个是我们之前说过的gl，另一个是页面里那两个保存着shader代码（GLSL）的控件的id，“shader-fs”或“shader-vs”，于是用jQuery取得控件，判断有没有“扑个空”，获取内部字符串（GLSL代码），判断控件的type标签是fragment还是vertex（id和标签都是自己定义的，对应上就好）
+两个参数，一个是我们之前说过的gl，另一个是页面里那两个保存着shader代码（GLSL）的控件的id，“shader-fs”或“shader-vs”。
+
+用jQuery取得控件->
+
+判断有没有“扑个空”->
+
+获取内部字符串（GLSL代码）->
+
+判断控件的type标签是fragment还是vertex（id和标签都是自己定义的，对应上就好）->
+
+用gl新建相应类型的shader对象，把代码字符串交给对象（shaderSource()）->
+
+编译shader->
+
+查看编译是否出错（就像编译C语言一样，也会研究语法错误什么的）->
+
+都顺利的话这个函数就返回了编译好的shader。
+
+```javascript
+var shaderProgram;
+function initShaders()
+{
+	var fragmentShader = getShader(gl, "shader-fs");
+	var vertexShader = getShader(gl, "shader-vs");
+	shaderProgram = gl.createProgram();
+	gl.attachShader(shaderProgram, vertexShader);
+	gl.attachShader(shaderProgram, fragmentShader);
+	gl.linkProgram(shaderProgram);
+	if(!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS))
+	{
+		alert("无法初始化“Shader”。");
+	}
+	gl.useProgram(shaderProgram);
+
+```
+拿到编译好的shader，就该把shader告诉显卡了。我们得把两个独立的shader连城流水线。
+
+用gl申请一个Program给shaderProgram，把两个shader交给shaderProgram，用shaderProgram链接它们，然后交给“画笔”gl.useProgram(shaderProgram)。
+```javascript
+
+	shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
+	gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
+
+	shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
+	shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
+}
+```
+
+
