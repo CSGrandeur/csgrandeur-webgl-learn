@@ -44,3 +44,34 @@ function webGLStart()
 	drawScene();
 }
 ```
+“$(document).ready(function (){});”是jQuery语法中，表示函数内的内容在Web页面加载完成时运行。如果不这样，可能在Web尚未加载完的时候，JS就开始尝试找某个控件，结果扑个空，代码逻辑就不能正常执行了。
+
+webGLStart函数是一切的开始，首先我们用canvas的id“test01-canvas”找到它，$("#xxx")是jQuery用id找控件的方法，用class找的话就是$(".xxx")。找到之后得到的是jQuery对象，这里用一个数组下标[0]获取canvas的HTML对象，然后赋值给我们定义的canvas变量。
+
+接下来三步是对不同部分的初始化，我们后面会说。
+
+gl是我们自己定义的变量名，对应绘制的内容，后面会说它的初始化。
+
+好比canvas是画布，gl是画笔，我们gl.clearColor四个参数，前三个RGB，第四个不透明度，这句就是让我们告诉gl：“如果没有新的通知，你就把整个画涂黑”。gl.enable用来开启一些功能，这里DEPTH_TEST是深度测试，现在我们先不管它有什么用，写到这就是。
+
+drawScene()就是具体绘制操作的函数，也是我们自己定义的，后面会说。
+
+
+###初始化“画笔”
+```javascript
+var gl;
+function initGL(canvas)
+{
+	try
+	{
+		gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+		gl.viewportWidth = canvas.width;
+		gl.viewportHeight = canvas.height;
+	}catch(e){}
+	if(!gl)
+	{
+		alert("无法初始化“WebGL”。");
+	}
+}
+```
+
