@@ -47,7 +47,7 @@ jQuery开源主页：https://github.com/jquery/jquery
 ```html
 <script src="jquery.min.js" type="text/javascript"></script>
 ```
-当然src=要加上能找到jquery.min.js文件的相对路径。
+当然src=要加上能找到jquery.min.js文件的相对路径。.js前面有个min的 意思是被压缩过的js，功能和不加min的一样，但文件更小加快网页打开速度。如果需要调试时候查看源码，就用不带min的版本。
 
 也可以用CDN：
 ```html
@@ -59,7 +59,7 @@ jQuery开源主页：https://github.com/jquery/jquery
 
 gl-matrix开源主页：https://github.com/toji/gl-matrix
 
-同样在页面顶端加入
+仓库的dist文件夹下有gl-matrix-min.js和gl-matrix.js两个文件。同样在页面顶端加入
 ```html
 <script src="gl-matrix-min.js" type="text/javascript"></script>
 ```
