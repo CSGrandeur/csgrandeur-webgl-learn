@@ -127,7 +127,7 @@ function initBuffers()
 	triangleVertexPositionBuffer.numItems = 3;
 
 ```
-itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比较自由，变量不用定义就能用，让相关对象自己携带相关信息方便许多。这里增加的信息就是明确“buffer里用vertices说明的九个数，表达的是三个顶点”。
+itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比较自由，变量不用定义就能用，让相关对象自己携带相关信息方便许多。这里增加的信息就是明确“buffer里用vertices给出的九个数，表达的是三个顶点”。
 ```javascript
 	squareVertexPositionBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
