@@ -192,5 +192,22 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
     
 
 好，回到这一节的代码，我们现在要告诉显卡怎么“画”，三步走：写自己的shader，把写好的shader按流水线连起来，告诉显卡。
-
+```c
+<script id = "shader-fs" type = "x-shader/x-fragment">
+	precision mediump float;
+	void main(void)
+	{
+		gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+	}
+</script>
+<script id = "shader-vs" type = "x-shader/x-vertex">
+	attribute vec3 aVertexPosition;
+	uniform mat4 uMVMatrix;
+	uniform mat4 uPMatrix;
+	void main(void)
+	{
+		gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+	}
+</script>
+```
 
