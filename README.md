@@ -31,15 +31,18 @@ Canvas是一个HTML元素，用 JavaScript来进行操作。所以开发WebGL主
 这本书是我学习WebGL过程的记录，会根据学习的经验写成教程的形式。
 
 学习开始是跟着“Learning WebGL”走的，后面是否会按自己的思路来现在还不知道，可以先把这本书理解为“Learning WebGL”的中文版。
-### 参考
-[Learning WebGL](http://learningwebgl.com)
-他的网站是：http://learningwebgl.com。
 
 这本书的GitBook主页：https://www.gitbook.com/book/csgrandeur/webgl-learn
 
 对应的Github主页：https://github.com/CSGrandeur/csgrandeur-webgl-learn
 
-，难免有许多错误与疏漏，欢迎指正。
+初学者，难免有许多错误与疏漏，欢迎指正。
+
+### 参考
+[Learning WebGL](http://learningwebgl.com)
+他的网站是：http://learningwebgl.com。
+
+
 
                                 By CSGrandeur, 2015年4月28日
 
