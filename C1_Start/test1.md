@@ -293,13 +293,70 @@ function initShaders()
 	shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
 	gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 ```
-后面画的时候需要设置GLSL里面的某些变量与输入数据的关系，gl.getAttribLocation(shaderProgram, "aVertexPosition")就得到了代码中aVertexPosition的“位置”。
-拿到这个位置，就让shaderProgram随身带着吧，shaderProgram.vertexPositionAttribute是我们自己加上去的（还是JS的特性，变量不用定义直接用）。
+后面画的时候需要设置GLSL里面的某些变量与输入数据的关系，所以需要gl.getAttribLocation(shaderProgram, "aVertexPosition")得到GLSL中aVertexPosition这个变量的“位置”。
+拿到这个位置，可以就让shaderProgram随身带着，shaderProgram.vertexPositionAttribute是我们自己加上去的（还是JS的特性，变量不用定义直接用）。
 ```javascript
 
 	shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
 	shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
 }
 ```
+后面还会用到uniform变量，用getUniformLocation()来取得它的位置，也让shaderProgram随身带着，加上去。
 
+```javascript
+var mvMatrix = mat4.create();
+var pMatrix = mat4.create();
+```
+新建一个模型视图矩阵mvMatrix，模型矩阵用来控制物体平移旋转缩放，视图矩阵控制观察者位置的相应变化，前面提过仿射变换通过矩阵相乘实现，模型和视图矩阵通常一起用，所以这里定义为模型-视图矩阵。
+
+pMatrix是投影矩阵，控制视野。视野有一定张角，并限定视野最远看到哪里，最近看到哪里，超出范围的数据不显示，只将张角、远近平面围起来的区域的数据进行计算映射。
+```javascript
+function setMatrixUniforms()
+{
+	gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
+	gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
+}
+```
+前面让shaderProgram随身携带shader中uniform变量的位置，这里通过gl.uniformMatrix4fv把JS中我们定义的两个矩阵与GLSL中的对应变量绑定了，这样GPU就能得到我们在CPU中（执行JS代码）为两个矩准备的值。
+```javascript
+function drawScene()
+{
+	gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+	mat4.perspective(pMatrix, 45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
+
+```
+万事俱备，可以“画”了。首先设置视口大小，我们就设置成画布大小。
+
+清理buffer。
+
+mat4是外部库gl-matrix提供的矩阵运算，gl-matrix也在维护更新，写这篇的时候是2.x版本，与1.x版本不同的是把一些函数的输出矩阵传参的位置，从最后一个提到第一个了，所以可能会与[LearningWebGL](http://learningwebgl.com/blog/?p=28)有所不同。
+
+这里设置视场垂直张角45°，宽高比为画布的宽高比，视野最近限制距离和最远限制距离。把实现这套视野条件的矩阵存放到前面定义的pMatrix里，并通过前面的绑定操作，GPU中运行shader时，就可以从GLSL的代码中uniform变量“那个pMatrix”得到这里的“这个pMatrix”。
+
+```javascript
+	mat4.identity(mvMatrix);
+
+	mat4.translate(mvMatrix, mvMatrix, [-1.5, 0.0, -7.0]);
+
+```
+然后要把三角和矩形移动一下。我们前面两个数组设置每个点的坐标时候，是以原点为重心的，直接画就会让三角和矩形重叠在一起。
+
+我们分别让它们一个左移一点，一个右移一点。
+
+在计算机中坐标的平移、旋转、缩放是通过**仿射变换**实现的，（可以上网查一下仿射变换）。把三维坐标放到一个4\*4的矩阵里，当然会多一维出来，在计算中是有用的。根据坐标变换的需要，设计一个或一系列4\*4的变换矩阵，然后把他们乘起来，就把坐标变换到了需要的位置，矩阵乘法是满足结合律的，所以一系列变换可以乘好为一个矩阵，再去乘原坐标的矩阵。至于为什么4*4，第四维填什么数字，为什么矩阵乘就能坐标变换，那都是数学上的事了。我们用gl-matrix这个优秀的库，就省去了考虑这些繁琐的东西。
+```javascript
+	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
+	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+	setMatrixUniforms();
+	gl.drawArrays(gl.TRIANGLES, 0, triangleVertexPositionBuffer.numItems);
+
+    mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0,  0.0]);
+    gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
+    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+    setMatrixUniforms();
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
+}
+```
 
