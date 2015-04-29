@@ -255,7 +255,7 @@ function getShader(gl, id)
 * 用gl新建相应类型的shader对象，把代码字符串交给对象（shaderSource()）-&gt;
 * 编译shader-&gt;
 * 查看编译是否出错（就像编译C语言一样，也会研究语法错误什么的）-&gt;
-* 都顺利的话这个函数就返回了编译好的shader。
+* 都顺利的话这个函数就返回了编译好的shader
 
 ```javascript
 var shaderProgram;
