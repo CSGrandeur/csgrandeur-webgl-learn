@@ -320,7 +320,7 @@ function drawScene()
 
 清理buffer。
 
-mat4是外部库gl-matrix提供的矩阵运算，gl-matrix也在维护更新，写这篇的时候是2.x版本，与1.x版本不同的是把一些函数的输出矩阵传参的位置，从最后一个提到第一个了，所以可能会与[LearningWebGL](http://learningwebgl.com/blog/?p=28)有所不同。
+mat4是外部库gl-matrix提供的矩阵运算类，gl-matrix也在维护更新，写这篇的时候是2.x版本，与1.x版本不同的是把一些函数的输出矩阵传参的位置，从最后一个提到第一个了，所以可能会与[LearningWebGL](http://learningwebgl.com/blog/?p=28)有所不同。
 
 这里设置视场垂直张角45°，宽高比为画布的宽高比，视野最近限制距离和最远限制距离。把实现这套视野条件的矩阵存放到前面JS代码中定义的pMatrix里。
 
