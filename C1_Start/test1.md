@@ -20,3 +20,27 @@ id是控件的唯一标识，原则上你不能写两个canvas用同一个id。�
 ```html
 <script type="text/javascript">
 ```
+HTML文件中插入JS代码，需要先加入标签，JS代码写在标签下面。结束的时候当然对应也要加上：
+```html
+</script>
+```
+好，jS代码开始。
+```javascript
+$(document).ready(function ()
+{
+	webGLStart();
+});
+
+function webGLStart()
+{
+	var canvas = $("#test01-canvas")[0];
+	initGL(canvas);
+	initShaders();
+	initBuffers();
+
+	gl.clearColor(0.0, 0.0, 0.0, 1.0);
+	gl.enable(gl.DEPTH_TEST);
+
+	drawScene();
+}
+```
