@@ -117,7 +117,7 @@ function initBuffers()
 	            	 1.0, -1.0,  0.0
 	            	 ];
 ```
-定义三角形的三个顶点，我们现在画平面的图，z坐标就设为0。
+定义三角形的三个顶点，我们现在画平面的形状，z坐标就设为0。
 ```javascript
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 ```
