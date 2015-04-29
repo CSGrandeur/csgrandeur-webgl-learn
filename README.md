@@ -40,5 +40,6 @@ Canvas是一个HTML元素，用 JavaScript来进行操作。所以开发WebGL主
 对应的Github主页：https://github.com/CSGrandeur/csgrandeur-webgl-learn
 
 ，难免有许多错误与疏漏，欢迎指正。
+
                                 By CSGrandeur, 2015年4月28日
 
