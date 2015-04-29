@@ -56,6 +56,13 @@ gl是我们自己定义的变量名，对应绘制的内容，后面会说它的
 
 drawScene()就是具体绘制操作的函数，也是我们自己定义的，后面会说。
 
+一套代码流程的整体思路就是：
+
+取得画布(canvas)->
+从画布拿到画它的工具(gl)->
+设置要画的内容（点的坐标，点之间的拓扑关系，存放到buffer里）->
+告诉显卡要怎么画（从哪个方向看，点线面的颜色之类，用shader来交流）->
+画！
 
 ###初始化“画笔”
 ```javascript
@@ -74,4 +81,65 @@ function initGL(canvas)
 	}
 }
 ```
+这里我们定义了全局变量 gl，一般全局变量是不提倡的，第一节我们尽量少关注其他问题，这样方便一些。
 
+canvas在入口里已经获取到了，canvas.getContext来拿到它的“内容”给gl画，之后gl无论画什么，都是在这个canvas的画布上。参数用了“experimental-webgl”和“webgl”并通过或运算连起来，因为webgl标准存在一个“实验阶段”，要通过“experimental-webgl”来获取内容，我现在直接只用“webgl”就可以，不过为了兼容性和其他不确定问题，两个都写上总保险些。
+
+viewport顾名思义是视口，对于我们来说是在canvas上画，但是从另一个比较入戏的角度来说，计算机里放好了3D模型，我们是在选一个角度看，而且不一定是真的我们看，也可能是模仿一个蚂蚁去看，视野总是不同的，这里我们设置视口宽高和canvas画布大小一致。
+
+
+###设置要画的内容
+
+如果一个点一个点告诉显卡的话，累死我们，急死显卡。
+把要画的内容所有的点存到一个缓冲区，对应显卡内存一块区域，让显卡一起处理，对数据规模较大又要即时演算做动画的情况，提高效率。
+```javascript
+var triangleVertexPositionBuffer;
+var squareVertexPositionBuffer;
+```
+
+分别定义三角的buffer和矩形的buffer，刚定义的时候它们当然只是个什么都没有的变量。
+```javascript
+function initBuffers()
+{
+	triangleVertexPositionBuffer = gl.createBuffer
+```
+用gl给他们申请buffer。
+
+```
+	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
+```
+告诉WebGL，下面的代码在有新的变化之前，对gl.ARRAY_BUFFER操作就是对绑定的缓冲区（triangleVertexPositionBuffer）操作。
+```javascript
+	var vertices = [
+	            	 0.0,  1.0,  0.0,
+	            	-1.0, -1.0,  0.0,
+	            	 1.0, -1.0,  0.0
+	            	 ];
+```
+定义三角形的三个顶点，我们现在画平面，z坐标就设为0。
+```javascript
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+```
+前面已经绑定了ARRAY_BUFFER，这里把定义的三角形顶点坐标数组告诉它，也就是告诉了triangleVertexPositionBuffer。第三个参数STATIC_DRAW理解为“这数据的用途”，Float32Array和STATIC_DRAW这里先直接用，以后再解释。
+```javascript
+	triangleVertexPositionBuffer.itemSize = 3;
+	triangleVertexPositionBuffer.numItems = 3;
+
+```
+itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比较自用，变量不用定义就能用，让buffer自己携带相关信息方便许多。这里增加的信息就是明确“buffer里用vertices说明的九个数，表达的是三个顶点”。
+```javascript
+	squareVertexPositionBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
+	vertices = [
+	        	 1.0,  1.0,  0.0,
+	        	-1.0,  1.0,  0.0,
+	        	 1.0, -1.0,  0.0,
+	        	-1.0, -1.0,  0.0
+	        	];
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+	squareVertexPositionBuffer.itemSize = 3;
+	squareVertexPositionBuffer.numItems = 4;
+
+}
+```
+同理我们设置的矩形的数据。
