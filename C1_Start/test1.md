@@ -212,7 +212,7 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
 
 上面就是基础功能的片段着色器（fragment shader）和顶点着色器（vertex shader）。shader不一定要以这种形式保存，其实我们的GLSL代码可以写在某个变量里，别的控件里，单独的文件里，甚至别人的网站里。。。只要WebGL在需要编译链接shader的时候，能用某种方法拿到整个GLSL代码的字符串就可以了。
 
-我们这里把shader直接写在页面里，要写一个对应的方法在WebGL运行时拿到这些代码的字符串。
+我们这里把shader直接写在页面里，就要写一个对应的方法在WebGL运行时拿到这些代码的字符串。
 ```javascript
 function getShader(gl, id)
 {
