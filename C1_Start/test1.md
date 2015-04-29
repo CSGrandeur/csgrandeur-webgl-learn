@@ -189,7 +189,7 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
     这就是一条渲染管线了，中间的两个操作对应两个不同功能的shader。
 
 
-好，回到这一节的代码，我们现在要告诉显卡怎么“画”，三步走：写自己的shader，把写好的shader按流水线连起来，告诉显卡。
+好，回到这一节的代码，我们现在要告诉显卡怎么“画”。三步走：写自己的shader，把写好的shader按流水线连起来，告诉显卡。
 ```c
 <script id = "shader-fs" type = "x-shader/x-fragment">
 	precision mediump float;
