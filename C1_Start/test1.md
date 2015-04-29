@@ -248,17 +248,17 @@ function getShader(gl, id)
 ```
 两个参数，一个是我们之前说过的gl，另一个是页面里那两个保存着shader代码（GLSL）的控件的id，“shader-fs”或“shader-vs”。
 
-用jQuery取得控件->
+用jQuery取得控件-&gt;
 
-判断有没有“扑个空”->
+判断有没有“扑个空”-&gt;
 
-获取内部字符串（GLSL代码）->
+获取内部字符串（GLSL代码）-&gt;
 
-判断控件的type标签是fragment还是vertex（id和标签都是自己定义的，对应上就好）->
+判断控件的type标签是fragment还是vertex（id和标签都是自己定义的，对应上就好）-&gt;
 
-用gl新建相应类型的shader对象，把代码字符串交给对象（shaderSource()）->
+用gl新建相应类型的shader对象，把代码字符串交给对象（shaderSource()）-&gt;
 
-编译shader->
+编译shader-&gt;
 
 查看编译是否出错（就像编译C语言一样，也会研究语法错误什么的）->
 
