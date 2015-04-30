@@ -369,13 +369,20 @@ shaderProgram随身携带的，shader代码中“vertexPositionAttribute”变�
 矩形同理，注意两点，一是这里没对mvMatrix使用identity，而直接变换，那将接着刚才向左平移的-1.5进行变换，这次变换之后实际相对原点是向右平移了1.5。二是这里用的TRIANGLE_STRIP——三角条带，就是画了第一个三角形后，每个新点都和之前两个点组成三角形，这里相当于画两个三角形组成了矩形。
 
 
+
 呼~~第一节完成了，我们可以在网页上看到开头的那个效果图——黑色背景中左边三角右边矩形。
 
 本以为能比[LearningWebGL](http://learningwebgl.com)写得精简些，没想到也写了这么多。
 
-贴完整代码方便测试
+贴完整代码方便测试。
+
+下面代码顶部加了前面说的jQuery和gl-matrix的，用的bootstrap中文网的CDN，减少第一次接触Web的新手的工作量。后面的内容不再在示例代码中添加这些外部JS，大家要自行添加。
 
 ```html
+<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+<script src="http://cdn.bootcss.com/gl-matrix/2.2.1/gl-matrix-min.js"></script>
+
+
 <div class="page-header"><h3>1、三角与矩形</h3></div>
 
 <canvas id = "test01-canvas" width = "800" height = "600"></canvas>
