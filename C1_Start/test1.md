@@ -346,7 +346,7 @@ mat4.translate就完成了平移操作（当然这里只是生成了进行平移
 ```
 又见bindBuffer，前面解释过，这时又进入了“对gl.ARRAY_BUFFER操作就是对triangleVertexPositionBuffer操作”的状态。
 
-shaderProgram随身携带的shader代码中“vertexPositionAttribute”变量的位置这里用上了，triangleVertexPositionBuffer的itemSize也是前面我们让它随身带上的。
+shaderProgram随身携带的，shader代码中“vertexPositionAttribute”变量的位置这里用上了，triangleVertexPositionBuffer的itemSize也是前面我们让它随身带上的。
 
 这样就告诉GPU：shader的GLSL代码中vertexPositionAttribute变量使用的是gl目前绑定的buffer（也就是triangleVertexPositionBuffer），每itemSize(这里是3）个数组成一个item。剩下的参数以后再说。
 
