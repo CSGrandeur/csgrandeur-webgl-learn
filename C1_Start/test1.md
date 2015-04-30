@@ -372,7 +372,7 @@ shaderProgram随身携带的shader代码中“vertexPositionAttribute”变量�
 
 本以为能比[LearningWebGL](http://learningwebgl.com)写得精简些，没想到也写了这么多。
 
-贴完整代码方便赋值测试
+贴完整代码方便测试
 
 ```html
 <div class="page-header"><h3>1、三角与矩形</h3></div>
