@@ -376,7 +376,7 @@ shaderProgram随身携带的，shader代码中“vertexPositionAttribute”变�
 
 贴完整代码方便测试。
 
-下面代码顶部加了前面说的jQuery和gl-matrix的，用的bootstrap中文网的CDN，减少第一次接触Web的新手的工作量。后面的内容不再在示例代码中添加这些外部JS，大家要自行添加。
+为减少第一次接触Web的同学的工作量，下面代码顶部加了前面说的jQuery和gl-matrix的，用的bootstrap中文网的CDN，如果这个CDN不失效的话，应该是不加任何额外代码就可以达到本节预期效果的。后面的内容不再在示例代码中添加这些外部JS，大家要自行添加。
 
 ```html
 <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
