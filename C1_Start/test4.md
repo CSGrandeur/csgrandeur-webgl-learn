@@ -16,7 +16,7 @@
 2. 另一方面如果我们用多边形画面的时候，接口不清楚我们每个面有几条边，就要用for循环去一个面一个面画。如果用“TRIANGLE_STRIP”来画，则这个面画完，可能会和另一个面的顶点组成一个我们并不想画的三角形。如果用“TRIANGLES”来画，一个面四个点，等于两个三角形，两个公共点的坐标我们就需要多提供一次。使用索引+“TRIANGLES”，就方便多了。
 
 
-为了让变量名更有意义一些，先把所有的triangle改成pyramid，square改成cube。比如rTri改为rPyramid，triangleVertexPositionBuffer改成pyramidVertexPositionBuffer等等。
+为了让变量名更有意义一些，先把所有的triangle改成pyramid，square改成cube。比如rTri改成rPyramid，triangleVertexPositionBuffer改成pyramidVertexPositionBuffer等等。
 
 我们这里四面体对所有面都分别给出点坐标，正方体用点索引的方法。
 
