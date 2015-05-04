@@ -6,9 +6,9 @@ WebGL也是这样，我们每隔很小的一段时间，往canvas上画一遍和
 
 效果如图3。
 
-![图3](../image/C1_Start/1_1_003.gif)
+>![图3](../image/C1_Start/1_1_003.gif)
 
-图3
+>图3
 
 首先修改webGLStart()。
 ```javascript
