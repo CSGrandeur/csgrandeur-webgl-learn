@@ -84,7 +84,7 @@ function animate()
 	lastTime = timeNow;
 }
 ```
-我们不断保存上一帧的时间，“这一帧”调用js函数取得当前时间，然后计算三角和矩形应该转过的角度，转多快可以自己修改这部分代码来控制。
+我们不断保存上一帧的时间，“这一帧”调用JS函数取得当前时间，然后计算三角和矩形应该转过的角度，转多快可以自己修改这部分代码来控制。
 
 ```javascript
 var mvMatrixStack = [];
@@ -120,7 +120,7 @@ function degToRad(degrees)
 ```html
 <div class="page-header"><h3>3、一点运动</h3></div>
 
-<canvas id = "test02-canvas" width = "800" height = "600"></canvas>
+<canvas id = "test03-canvas" width = "800" height = "600"></canvas>
 
 <script id = "shader-vs" type = "x-shader/x-vertex">
 	attribute vec3 aVertexPosition;
@@ -162,7 +162,7 @@ $(document).ready(function ()
 
 function webGLStart()
 {
-	var canvas = $("#test02-canvas")[0];
+	var canvas = $("#test03-canvas")[0];
 	initGL(canvas);
 	initShaders();
 	initBuffers();
