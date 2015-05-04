@@ -36,7 +36,7 @@ requestAnimFrame(tick)表示定时反复执行tick()。大多我们做这类事�
 	animate();
 }
 ```
-规律地执行tick()，于是我们便反复执行“画”和“动”了，drawScene()我们已了解，animate()就是计算下一时刻我们希望呈现的这一帧的样子。
+规律地执行tick()，我们便反复执行“画”和“动”了，drawScene()我们已了解，animate()就是计算下一时刻我们希望呈现的帧的样子。
 
 ```javascript
 var rTri = 0;
