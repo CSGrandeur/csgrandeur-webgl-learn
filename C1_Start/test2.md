@@ -271,6 +271,7 @@ function initBuffers()
 			  	0.0, 1.0, 0.0, 1.0,
 			  	0.0, 0.0, 1.0, 1.0
 			  	];
+			  	
   	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), 
   	    gl.STATIC_DRAW);
   	triangleVertexColorBuffer.itemSize = 4;
