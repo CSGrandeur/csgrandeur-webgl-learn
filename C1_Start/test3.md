@@ -1,194 +1,134 @@
-## 来点真正的3D
+## 一点运动
 
-这节我们把三角改成四面体，矩形改成正方体。
+这一节我们要让前面的三角和矩形动一动。想想我们看电影，无论是胶片的还是数字的，都不是绝对连续的，而是一帧一帧有微小区别的画面连起来，快速变换（大约一秒钟30帧），让人感觉是连续的。
 
-效果如图4。
+WebGL也是这样，我们每隔很小的一段时间，往canvas上画一遍和前一个画面有微小差别的内容。
 
+效果如图3。
 
->![图4](../image/C1_Start/1_1_004.gif)
+>![图3](../image/C1_Start/1_1_003.gif)
 
->图4
+>图3
 
-之前的平面图形是一个面，立体的图形是由多个面组成的，我们一个面一个面地给出顶点坐标，画上去就可以了。
-
-在绘制正方体的时候，我们增加一个索引。原因是：
-1. 一方面相邻的面是有公共点的，如果所有面都各自用坐标表示，就多了许多重复工作，所以这时我们增加一个索引（index），这样只需给出所有点的坐标，然后用索引来重复使用点。
-2. 另一方面如果我们用多边形画面的时候，接口不清楚我们每个面有几条边，就要用for循环去一个面一个面画。如果用“TRIANGLE_STRIP”来画，则这个面画完，可能会和另一个面的顶点组成一个我们并不想画的三角形。如果用“TRIANGLES”来画，一个面四个点，等于两个三角形，两个公共点的坐标我们就需要多提供一次。使用索引+“TRIANGLES”，就方便多了。
-
-
-为了让变量名更有意义一些，先把所有的triangle改成pyramid，square改成cube。比如rTri改为rPyramid，triangleVertexPositionBuffer改成pyramidVertexPositionBuffer等等。
-
-我们这里四面体对所有面都分别给出点坐标，正方体用点索引的方法。
-
+首先修改webGLStart()。
 ```javascript
-var cubeVertexIndexBuffer;
-```
-增加全局变量，索引的buffer。
-
-```javascript
-function initBuffers()
+function webGLStart()
 {
-	pyramidVertexPositionBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
-	var vertices = [
-					// 正面
-					 0.0, 1.0, 0.0,
-					-1.0, -1.0, 1.0,
-					 1.0, -1.0, 1.0,
-					// 右侧面
-					 0.0, 1.0, 0.0,
-					 1.0, -1.0, 1.0,
-					 1.0, -1.0, -1.0,
-					// 背面
-					 0.0, 1.0, 0.0,
-					 1.0, -1.0, -1.0,
-					-1.0, -1.0, -1.0,
-					// 左侧面
-					 0.0, 1.0, 0.0,
-					-1.0, -1.0, -1.0,
-					-1.0, -1.0, 1.0
-					];
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices),
-		gl.STATIC_DRAW);
-	pyramidVertexPositionBuffer.itemSize = 3;
-	pyramidVertexPositionBuffer.numItems = 12;
-
-	pyramidVertexColorBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
-	var colors = [
-				 // 正面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 // 右侧面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0,
-				 // 背面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 // 左侧面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0
-				];
- 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors),
- 		gl.STATIC_DRAW);
- 	pyramidVertexColorBuffer.itemSize = 4;
- 	pyramidVertexColorBuffer.numItems = 12;
-```
-对四面体，给出了三维世界中每个面的顶点坐标，相应的numItems也自然和三角的不一样了。
-```javascript
-	cubeVertexPositionBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
-	vertices = [
-				// 正面
-				-1.0, -1.0,  1.0,
-				 1.0, -1.0,  1.0,
-				 1.0,  1.0,  1.0,
-				-1.0,  1.0,  1.0,
-
-				// 背面
-				-1.0, -1.0, -1.0,
-				-1.0,  1.0, -1.0,
-				 1.0,  1.0, -1.0,
-				 1.0, -1.0, -1.0,
-
-				// 顶部
-				-1.0,  1.0, -1.0,
-				-1.0,  1.0,  1.0,
-				 1.0,  1.0,  1.0,
-				 1.0,  1.0, -1.0,
-
-				// 底部
-				-1.0, -1.0, -1.0,
-				 1.0, -1.0, -1.0,
-				 1.0, -1.0,  1.0,
-				-1.0, -1.0,  1.0,
-
-				// 右侧面
-				 1.0, -1.0, -1.0,
-				 1.0,  1.0, -1.0,
-				 1.0,  1.0,  1.0,
-				 1.0, -1.0,  1.0,
-
-				// 左侧面
-				-1.0, -1.0, -1.0,
-				-1.0, -1.0,  1.0,
-				-1.0,  1.0,  1.0,
-				-1.0,  1.0, -1.0,
-				];
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices),
-		gl.STATIC_DRAW);
-	cubeVertexPositionBuffer.itemSize = 3;
-	cubeVertexPositionBuffer.numItems = 24;
-
-	cubeVertexColorBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexColorBuffer);
-	colors = [
-			  [1.0, 0.0, 0.0, 1.0],	 // 正面
-			  [1.0, 1.0, 0.0, 1.0],	 // 背面
-			  [0.0, 1.0, 0.0, 1.0],	 // 顶部
-			  [1.0, 0.5, 0.5, 1.0],	 // 底部
-			  [1.0, 0.0, 1.0, 1.0],	 // 右侧面
-			  [0.0, 0.0, 1.0, 1.0]	 // 左侧面
-			];
-	var unpackedColors = [];
-	for (var i in colors)
-	{
-		var color = colors[i];
-		for (var j=0; j < 4; j++)
-		{
-			unpackedColors = unpackedColors.concat(color);
-		}
-	}
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(unpackedColors),
-		gl.STATIC_DRAW);
-	cubeVertexColorBuffer.itemSize = 4;
-	cubeVertexColorBuffer.numItems = 24;
-```
-
-代码还是把中正方体每个面的顶点分别给出，以便给不同的面设置不同颜色。
-
-颜色按顶点的顺序对应给出，这个for循环代码的逻辑，思考一下应该会明白。
-
-```javascript
-	cubeVertexIndexBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
-	var cubeVertexIndices = [
-							  0, 1, 2,	  0, 2, 3,	// 正面
-							  4, 5, 6,	  4, 6, 7,	// 背面
-							  8, 9, 10,	 8, 10, 11,  // 顶部
-							  12, 13, 14,   12, 14, 15, // 底部
-							  16, 17, 18,   16, 18, 19, // 右侧面
-							  20, 21, 22,   20, 22, 23  // 左侧面
-							];
-	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
-	cubeVertexIndexBuffer.itemSize = 1;
-	cubeVertexIndexBuffer.numItems = 36;
+    //...
+    //drawScene();
+	tick();
 }
 ```
-索引的设置方法与前面的顶点、颜色类似，只是相应改变了一些参数，如gl.ELEMENT_ARRAY_BUFFER、Uint16Array等。
+drawScene()不再在这个地方执行，而是调用了一个我们后面要定义的tick()函数，，下面我们看看tick()做些什么。
+```javascript
+<script type="text/javascript">
+	requestAnimFrame = window.requestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.msRequestAnimationFrame ||
+		window.oRequestAnimationFrame ||
+		function(callback) { setTimeout(callback, 1000 / 60); };
+</script>
+```
+我们先在主程序外面额外写一段代码如上。由于标准不统一的问题，requestAnimationFrame这个功能在不同浏览器上有不同的名字，为了兼容，我们还用了或运算，用requestAnimFrame来统一代替它们，在下面的tick()中使用它。
+```javascript
+function tick()
+{
+	requestAnimFrame(tick);
+```
+requestAnimFrame(tick)表示定时反复执行tick()。大多我们做这类事的时候会用定时器setInterval，不过现在人们使用浏览器，一般会打开多个标签页，不同的标签页可能还有不同的WebGL内容，使用定时器的话，无论我们在浏览哪里，这个定时器都会一直跑，电脑压力蛮大的。requestAnimationFrame帮我们解决了这个问题，它会以一个合适的频率执行传入的函数，并且只在标签可见的时候运行。
+```javascript
+	drawScene();
+	animate();
+}
+```
+规律地执行tick()，我们便反复执行“画”和“动”了，drawScene()我们已了解，animate()就是计算下一时刻我们希望呈现的帧的样子。
 
+```javascript
+var rTri = 0;
+var rSquare = 0;
+```
+定义两个全局变量表示三角和矩形旋转的状态，它们随时间变化。使用全局变量并不好，后面的章节中会介绍如何更优雅地组织这些变量。
 ```javascript
 function drawScene()
 {
-    //...
-	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
-	setMatrixUniforms();
-	gl.drawElements(gl.TRIANGLES,
-		cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
-	////mvPopMatrix();
+	//...
+	////mat4.translate(mvMatrix, mvMatrix, [-1.5, 0.0, -7.0]);
+	mvPushMatrix();
+	mat4.rotate(mvMatrix, mvMatrix, degToRad(rTri), [0, 1, 0]);
+	////gl.drawArrays(gl.TRIANGLES, 0,
+	////    triangleVertexPositionBuffer.numItems);
+	mvPopMatrix();
+	////mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0,  0.0]);
+	mvPushMatrix();
+	mat4.rotate(mvMatrix, mvMatrix, degToRad(rSquare), [1, 0, 0]);
+	//...
+	////gl.drawArrays(gl.TRIANGLE_STRIP, 0,
+	////    squareVertexPositionBuffer.numItems);
+    mvPopMatrix();
 }
 ```
-绘制的时候，四面体依然使用gl.drawArrays()直接顶点数组画。对正方体使用索引来绘制，函数相应改为gl.drawElements()，当然这前面要绑定的buffer也要改为IndexBuffer。
+我们在drawScene()中增加了一些代码。
 
+这里消除一个常见误解（我当初就迷惑过），我们计算运动的时候，**不是**从上一帧状态计算这一帧状态，**而是**从初始状态通过时间差计算这一帧状态。所以我们在计算这一帧的运动状态前，先把初始状态保存起来，当画好这一帧之后，再把初始状态拿回来。
+
+rotate()的参数中传入了一个向量，是旋转轴的方向。
+
+mvPushMatrix()是我们自己实现的，将当前的模型-视图矩阵（初始状态）压栈暂存。degToRad()也是我们自己写的，简单地把“度数”转化为“弧度”。通过gl-matrix.js提供的方法，就方便地完成了旋转，计算出了图形在这个时间点对应的旋转位置。文中“////”表示插入新代码位置的上下文。
+
+上面使用了rTri和rSquare，它们是需要根据“当前时间”来计算的。
+```javascript
+var lastTime = 0;
+function animate()
+{
+	var timeNow = new Date().getTime();
+	if(lastTime != 0)
+	{
+		var elapsed = timeNow - lastTime;
+
+		rTri += (90 * elapsed) / 1000.0;
+		rSquare += (75 * elapsed) / 1000.0;
+	}
+	lastTime = timeNow;
+}
+```
+我们不断保存上一帧的时间，“这一帧”调用JS函数取得当前时间，然后计算三角和矩形应该转过的角度，转多快可以自己修改这部分代码来控制。
+
+```javascript
+var mvMatrixStack = [];
+
+function mvPushMatrix()
+{
+	var copy = mat4.clone(mvMatrix);
+```
+数组的直接赋值是引用，操作新数组会改变原数组（可以用直接赋值看看效果的区别，俩形状转得更欢）。
+
+所以这里用了gl-matrix.js提供的clone 。[LearningWebGL](http://learningwebgl.com)中使用的是“mat4.set(mvMatrix, copy)”，可能也是gl-matrix的1.x和2.x版本的区别，我看新版本中没有这个方法了。
+```javascript
+	mvMatrixStack.push(copy);
+}
+function mvPopMatrix()
+{
+	if(mvMatrixStack.length == 0)
+	{
+		throw "不合法的矩阵出栈操作!";
+	}
+	mvMatrix = mvMatrixStack.pop();
+}
+```
+JS本身有在数组上的push和pop方法，所以mvMatrixStack数组当栈直接使用了。
+```javascript
+function degToRad(degrees)
+{
+	return degrees * Math.PI / 180;
+}
+```
+0~180对应0~π的转换就很简单了。JS的Math对象有常用的数学常量与方法。
 ### 完整代码
 ```html
-<div class="page-header"><h3>4、来点真正的3D</h3></div>
+<div class="page-header"><h3>3、一点运动</h3></div>
 
-<canvas id = "test04-canvas" width = "800" height = "600"></canvas>
+<canvas id = "test03-canvas" width = "800" height = "600"></canvas>
 
 <script id = "shader-vs" type = "x-shader/x-vertex">
 	attribute vec3 aVertexPosition;
@@ -230,7 +170,7 @@ $(document).ready(function ()
 
 function webGLStart()
 {
-	var canvas = $("#test04-canvas")[0];
+	var canvas = $("#test03-canvas")[0];
 	initGL(canvas);
 	initShaders();
 	initBuffers();
@@ -314,17 +254,17 @@ function initShaders()
 	gl.useProgram(shaderProgram);
 
 	shaderProgram.vertexPositionAttribute =
-		gl.getAttribLocation(shaderProgram, "aVertexPosition");
+	    gl.getAttribLocation(shaderProgram, "aVertexPosition");
 	gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 
 	shaderProgram.vertexColorAttribute =
-		gl.getAttribLocation(shaderProgram, "aVertexColor");
+	    gl.getAttribLocation(shaderProgram, "aVertexColor");
 	gl.enableVertexAttribArray(shaderProgram.vertexColorAttribute);
 
 	shaderProgram.pMatrixUniform =
-		gl.getUniformLocation(shaderProgram, "uPMatrix");
+	    gl.getUniformLocation(shaderProgram, "uPMatrix");
 	shaderProgram.mvMatrixUniform =
-		gl.getUniformLocation(shaderProgram, "uMVMatrix");
+	    gl.getUniformLocation(shaderProgram, "uMVMatrix");
 }
 
 
@@ -355,198 +295,115 @@ function setMatrixUniforms()
 }
 
 
-var pyramidVertexPositionBuffer;
-var pyramidVertexColorBuffer;
-var cubeVertexPositionBuffer;
-var cubeVertexColorBuffer;
-var cubeVertexIndexBuffer;
+var triangleVertexPositionBuffer;
+var triangleVertexColorBuffer;
+var squareVertexPositionBuffer;
+var squareVertexColorBuffer;
 
 function initBuffers()
 {
-	pyramidVertexPositionBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
+	triangleVertexPositionBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
 	var vertices = [
-					// 正面
-					 0.0, 1.0, 0.0,
-					-1.0, -1.0, 1.0,
-					 1.0, -1.0, 1.0,
-					// 右侧面
-					 0.0, 1.0, 0.0,
-					 1.0, -1.0, 1.0,
-					 1.0, -1.0, -1.0,
-					// 背面
-					 0.0, 1.0, 0.0,
-					 1.0, -1.0, -1.0,
-					-1.0, -1.0, -1.0,
-					// 左侧面
-					 0.0, 1.0, 0.0,
-					-1.0, -1.0, -1.0,
-					-1.0, -1.0, 1.0
-					];
+					 0.0,  1.0,  0.0,
+					-1.0, -1.0,  0.0,
+					 1.0, -1.0,  0.0
+					 ];
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices),
-		gl.STATIC_DRAW);
-	pyramidVertexPositionBuffer.itemSize = 3;
-	pyramidVertexPositionBuffer.numItems = 12;
+	    gl.STATIC_DRAW);
+	triangleVertexPositionBuffer.itemSize = 3;
+	triangleVertexPositionBuffer.numItems = 3;
 
-	pyramidVertexColorBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
+	triangleVertexColorBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer);
 	var colors = [
-				 // 正面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 // 右侧面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0,
-				 // 背面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 // 左侧面
-				 1.0, 0.0, 0.0, 1.0,
-				 0.0, 0.0, 1.0, 1.0,
-				 0.0, 1.0, 0.0, 1.0
-				];
- 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors),
- 		gl.STATIC_DRAW);
- 	pyramidVertexColorBuffer.itemSize = 4;
- 	pyramidVertexColorBuffer.numItems = 12;
+			  	1.0, 0.0, 0.0, 1.0,
+			  	0.0, 1.0, 0.0, 1.0,
+			  	0.0, 0.0, 1.0, 1.0
+			  	];
+  	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors),
+  	    gl.STATIC_DRAW);
+  	triangleVertexColorBuffer.itemSize = 4;
+  	triangleVertexColorBuffer.numItems = 3;
 
 
-	cubeVertexPositionBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
+	squareVertexPositionBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
 	vertices = [
-				// 正面
-				-1.0, -1.0,  1.0,
-				 1.0, -1.0,  1.0,
-				 1.0,  1.0,  1.0,
-				-1.0,  1.0,  1.0,
-
-				// 背面
-				-1.0, -1.0, -1.0,
-				-1.0,  1.0, -1.0,
-				 1.0,  1.0, -1.0,
-				 1.0, -1.0, -1.0,
-
-				// 顶部
-				-1.0,  1.0, -1.0,
-				-1.0,  1.0,  1.0,
-				 1.0,  1.0,  1.0,
-				 1.0,  1.0, -1.0,
-
-				// 底部
-				-1.0, -1.0, -1.0,
-				 1.0, -1.0, -1.0,
-				 1.0, -1.0,  1.0,
-				-1.0, -1.0,  1.0,
-
-				// 右侧面
-				 1.0, -1.0, -1.0,
-				 1.0,  1.0, -1.0,
-				 1.0,  1.0,  1.0,
-				 1.0, -1.0,  1.0,
-
-				// 左侧面
-				-1.0, -1.0, -1.0,
-				-1.0, -1.0,  1.0,
-				-1.0,  1.0,  1.0,
-				-1.0,  1.0, -1.0,
+				 1.0,  1.0,  0.0,
+				-1.0,  1.0,  0.0,
+				 1.0, -1.0,  0.0,
+				-1.0, -1.0,  0.0
 				];
+				
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices),
-		gl.STATIC_DRAW);
-	cubeVertexPositionBuffer.itemSize = 3;
-	cubeVertexPositionBuffer.numItems = 24;
+	    gl.STATIC_DRAW);
+	squareVertexPositionBuffer.itemSize = 3;
+	squareVertexPositionBuffer.numItems = 4;
 
-	cubeVertexColorBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexColorBuffer);
-	colors = [
-			  [1.0, 0.0, 0.0, 1.0],	 // 正面
-			  [1.0, 1.0, 0.0, 1.0],	 // 背面
-			  [0.0, 1.0, 0.0, 1.0],	 // 顶部
-			  [1.0, 0.5, 0.5, 1.0],	 // 底部
-			  [1.0, 0.0, 1.0, 1.0],	 // 右侧面
-			  [0.0, 0.0, 1.0, 1.0]	 // 左侧面
-			];
-	var unpackedColors = [];
-	for (var i in colors)
-	{
-		var color = colors[i];
-		for (var j=0; j < 4; j++)
-		{
-			unpackedColors = unpackedColors.concat(color);
-		}
+	squareVertexColorBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexColorBuffer);
+	colors = []
+	for (var i=0; i < 4; i++) {
+	  colors = colors.concat([0.5, 0.5, 1.0, 1.0]);
 	}
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(unpackedColors),
-		gl.STATIC_DRAW);
-	cubeVertexColorBuffer.itemSize = 4;
-	cubeVertexColorBuffer.numItems = 24;
+	
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors),
+	    gl.STATIC_DRAW);
+	squareVertexColorBuffer.itemSize = 4;
+	squareVertexColorBuffer.numItems = 4;
 
-	cubeVertexIndexBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
-	var cubeVertexIndices = [
-							  0, 1, 2,	  0, 2, 3,	// 正面
-							  4, 5, 6,	  4, 6, 7,	// 背面
-							  8, 9, 10,	 8, 10, 11,  // 顶部
-							  12, 13, 14,   12, 14, 15, // 底部
-							  16, 17, 18,   16, 18, 19, // 右侧面
-							  20, 21, 22,   20, 22, 23  // 左侧面
-							];
-	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
-	cubeVertexIndexBuffer.itemSize = 1;
-	cubeVertexIndexBuffer.numItems = 36;
 }
 
-var rPyramid = 0;
-var rCube = 0;
+var rTri = 0;
+var rSquare = 0;
 function drawScene()
 {
 	gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
 	mat4.perspective(pMatrix, 45, gl.viewportWidth /
-		gl.viewportHeight, 0.1, 100.0);
+	    gl.viewportHeight, 0.1, 100.0);
 
 	mat4.identity(mvMatrix);
 
-	mat4.translate(mvMatrix, mvMatrix, [-1.5, 0.0, -8.0]);
+	mat4.translate(mvMatrix, mvMatrix, [-1.5, 0.0, -7.0]);
 
 	mvPushMatrix();
-	mat4.rotate(mvMatrix, mvMatrix, degToRad(rPyramid), [0, 1, 0]);
+	mat4.rotate(mvMatrix, mvMatrix, degToRad(rTri), [0, 1, 0]);
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
+	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
 	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute,
-		pyramidVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+	    triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
+	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer);
 	gl.vertexAttribPointer(shaderProgram.vertexColorAttribute,
-		pyramidVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
+	    triangleVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
 	setMatrixUniforms();
 	gl.drawArrays(gl.TRIANGLES, 0,
-		pyramidVertexPositionBuffer.numItems);
+	    triangleVertexPositionBuffer.numItems);
 
 	mvPopMatrix();
 
-	mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0, 0.0]);
+	mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0,  0.0]);
 
 	mvPushMatrix();
-	mat4.rotate(mvMatrix, mvMatrix, degToRad(rCube), [1, 1, 1]);
+	mat4.rotate(mvMatrix, mvMatrix, degToRad(rSquare), [1, 0, 0]);
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
+	gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
 	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute,
-		cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+	    squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexColorBuffer);
+	gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexColorBuffer);
 	gl.vertexAttribPointer(shaderProgram.vertexColorAttribute,
-		cubeVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
+	    squareVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
 	setMatrixUniforms();
-	gl.drawElements(gl.TRIANGLES,
-		cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
+	gl.drawArrays(gl.TRIANGLE_STRIP, 0,
+	    squareVertexPositionBuffer.numItems);
 
-	mvPopMatrix();
+    mvPopMatrix();
 }
 function degToRad(degrees)
 {
@@ -560,8 +417,8 @@ function animate()
 	{
 		var elapsed = timeNow - lastTime;
 
-		rPyramid += (90 * elapsed) / 1000.0;
-		rCube += (75 * elapsed) / 1000.0;
+		rTri += (90 * elapsed) / 1000.0;
+		rSquare += (75 * elapsed) / 1000.0;
 	}
 	lastTime = timeNow;
 }
