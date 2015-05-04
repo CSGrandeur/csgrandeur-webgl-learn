@@ -106,7 +106,8 @@ function drawScene()
 ```
 也和坐标buffer类似。
 
-最后是完整代码。
+### 完整代码
+
 ```html
 <div class="page-header"><h3>2、添加颜色</h3></div>
 
