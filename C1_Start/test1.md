@@ -284,6 +284,8 @@ function initShaders()
 ```
 后面画的时候需要设置GLSL里面的某些变量与输入数据的关系，所以需要gl.getAttribLocation(shaderProgram, "aVertexPosition")得到GLSL中aVertexPosition这个变量的“位置”。
 拿到这个位置，可以就让shaderProgram随身带着，shaderProgram.vertexPositionAttribute是我们自己加上去的（还是JS的特性，变量不用定义直接用）。
+
+gl.enableVertexAttribArray告诉WebGL，这个属性（attribute）的值是用array给出的。
 ```javascript
 
 	shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
