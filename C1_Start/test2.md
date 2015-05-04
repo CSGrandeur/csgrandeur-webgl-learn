@@ -104,7 +104,7 @@ function drawScene()
 也和坐标buffer类似。
 
 最后是完整代码。
-```javascript
+```html
 <div class="page-header"><h3>2、添加颜色</h3></div>
 
 <canvas id = "test02-canvas" width = "800" height = "600"></canvas>
