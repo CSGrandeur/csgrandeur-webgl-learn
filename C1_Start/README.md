@@ -43,7 +43,8 @@ jQuery开源主页：https://github.com/jquery/jquery
 
 也可以用CDN：
 ```html
-<script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js" 
+type="text/javascript"></script>
 ```
 用CDN的前提是查看网页的这台电脑要联网。
 #### gl-matrix
