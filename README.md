@@ -1,5 +1,6 @@
 # CSGrandeur的WebGL学习
 ## **简介**
+
 ### WebGL是什么
 网上查定义很容易，这就不说官话了。
 
@@ -37,6 +38,8 @@ Canvas是一个HTML元素，用 JavaScript来进行操作。所以开发WebGL主
 对应的Github主页：https://github.com/CSGrandeur/csgrandeur-webgl-learn
 
 初学者，难免有错误与疏漏，欢迎指正。
+
+欢迎加入交流讨论QQ群：217160095。一起把这本书写得更好，一起学习WebGL。
 
 ### 参考
 [Learning WebGL](http://learningwebgl.com)
