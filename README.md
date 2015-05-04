@@ -40,7 +40,7 @@ Canvas是一个HTML元素，用 JavaScript来进行操作。所以开发WebGL主
 
 ### 参考
 [Learning WebGL](http://learningwebgl.com)
-他的网站是：http://learningwebgl.com
+他的网站是：http://learningwebgl.com 。
 
 
 
