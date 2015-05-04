@@ -72,7 +72,8 @@ function initGL(canvas)
 {
 	try
 	{
-		gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+		gl = canvas.getContext("webgl") ||
+		    canvas.getContext("experimental-webgl");
 		gl.viewportWidth = canvas.width;
 		gl.viewportHeight = canvas.height;
 	}catch(e){}
@@ -190,7 +191,7 @@ itemSize和numItems并不是WebGL的内置变量，不过JavaScript这方面比�
 
 
 好，回到这一节的代码，我们现在要告诉显卡怎么“画”。三步走：写自己的shader，把写好的shader按流水线连起来，告诉显卡。
-```javascript
+```html
 <script id = "shader-fs" type = "x-shader/x-fragment">
 	precision mediump float;
 	void main(void)
@@ -279,7 +280,8 @@ function initShaders()
 用gl申请一个Program给shaderProgram，把两个shader交给shaderProgram，用shaderProgram链接它们，然后交给“画笔”gl.useProgram(shaderProgram)。
 ```javascript
 
-	shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
+	shaderProgram.vertexPositionAttribute = 
+	    gl.getAttribLocation(shaderProgram, "aVertexPosition");
 	gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 ```
 后面画的时候需要设置GLSL里面的某些变量与输入数据的关系，所以需要gl.getAttribLocation(shaderProgram, "aVertexPosition")得到GLSL中aVertexPosition这个变量的“位置”。
@@ -288,8 +290,10 @@ function initShaders()
 gl.enableVertexAttribArray告诉WebGL，这个属性（attribute）的值是用array给出的。
 ```javascript
 
-	shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
-	shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
+	shaderProgram.pMatrixUniform = 
+	    gl.getUniformLocation(shaderProgram, "uPMatrix");
+	shaderProgram.mvMatrixUniform = 
+	    gl.getUniformLocation(shaderProgram, "uMVMatrix");
 }
 ```
 后面还会用到uniform变量，用getUniformLocation()来取得它的位置，也让shaderProgram随身带着，加上去。
@@ -344,7 +348,8 @@ mat4.translate就完成了平移操作（当然这里只是生成了进行平移
 
 ```javascript
 	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
-	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
+	    triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 ```
 又见bindBuffer，前面解释过，这时又进入了“对gl.ARRAY_BUFFER操作就是对triangleVertexPositionBuffer操作”的状态。
 
@@ -363,9 +368,11 @@ shaderProgram随身携带的，shader代码中“vertexPositionAttribute”变�
 ```javascript
     mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0,  0.0]);
     gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
-    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute,
+        squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
     setMatrixUniforms();
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 
+        squareVertexPositionBuffer.numItems);
 }
 ```
 矩形同理，注意两点，一是这里没对mvMatrix使用identity，而直接变换，那将接着刚才向左平移的-1.5进行变换，这次变换之后实际相对原点是向右平移了1.5。二是这里用的TRIANGLE_STRIP——三角条带，就是画了第一个三角形后，每个新点都和之前两个点组成三角形，这里相当于画两个三角形组成了矩形。
@@ -431,7 +438,8 @@ function initGL(canvas)
 {
 	try
 	{
-		gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+		gl = canvas.getContext("webgl") || 
+		    canvas.getContext("experimental-webgl");
 		gl.viewportWidth = canvas.width;
 		gl.viewportHeight = canvas.height;
 	}catch(e){}
@@ -489,7 +497,8 @@ function initShaders()
 	}
 	gl.useProgram(shaderProgram);
 
-	shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
+	shaderProgram.vertexPositionAttribute = 
+	    gl.getAttribLocation(shaderProgram, "aVertexPosition");
 	gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 
 	shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
@@ -547,13 +556,15 @@ function drawScene()
 
 	mat4.translate(mvMatrix, mvMatrix, [-1.5, 0.0, -7.0]);
 	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
-	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
+	    triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 	setMatrixUniforms();
 	gl.drawArrays(gl.TRIANGLES, 0, triangleVertexPositionBuffer.numItems);
 
     mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0,  0.0]);
     gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
-    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
+        squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
     setMatrixUniforms();
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
 }
