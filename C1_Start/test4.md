@@ -486,14 +486,15 @@ function initBuffers()
 
 	cubeVertexIndexBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
-	var cubeVertexIndices = [
-							  0, 1, 2,	  0, 2, 3,	// 正面
-							  4, 5, 6,	  4, 6, 7,	// 背面
-							  8, 9, 10,	 8, 10, 11,  // 顶部
-							  12, 13, 14,   12, 14, 15, // 底部
-							  16, 17, 18,   16, 18, 19, // 右侧面
-							  20, 21, 22,   20, 22, 23  // 左侧面
-							];
+	var cubeVertexIndices = 
+		[
+		  0, 1, 2,	  0, 2, 3,	// 正面
+		  4, 5, 6,	  4, 6, 7,	// 背面
+		  8, 9, 10,	 8, 10, 11,  // 顶部
+		  12, 13, 14,   12, 14, 15, // 底部
+		  16, 17, 18,   16, 18, 19, // 右侧面
+		  20, 21, 22,   20, 22, 23  // 左侧面
+		];
 	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
 	cubeVertexIndexBuffer.itemSize = 1;
 	cubeVertexIndexBuffer.numItems = 36;
