@@ -12,5 +12,5 @@
    * [添加颜色](src/test2_code.md)
    * [一点运动](src/test3_code.md)
    * [来点真正的3D](src/test4_code.md)
-   * 引入纹理
+   * [引入纹理](src/test5_code.md)
 
