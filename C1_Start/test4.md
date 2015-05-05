@@ -165,7 +165,8 @@ function initBuffers()
 		  16, 17, 18,   16, 18, 19, // 右侧面
 		  20, 21, 22,   20, 22, 23  // 左侧面
 		];
-	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
+	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, 
+	    new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
 	cubeVertexIndexBuffer.itemSize = 1;
 	cubeVertexIndexBuffer.numItems = 36;
 }
@@ -496,7 +497,8 @@ function initBuffers()
 		  16, 17, 18,   16, 18, 19, // 右侧面
 		  20, 21, 22,   20, 22, 23  // 左侧面
 		];
-	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
+	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, 
+	    new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
 	cubeVertexIndexBuffer.itemSize = 1;
 	cubeVertexIndexBuffer.numItems = 36;
 }
