@@ -10,5 +10,5 @@
 * [附录1：完整代码](src/README.md)
    * [三角与矩形](src/test1_code.md)
    * [添加颜色](test2_code.md)
-   * 一点运动
+   * [一点运动](src/test3_code.md)
 
