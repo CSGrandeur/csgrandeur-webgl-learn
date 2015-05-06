@@ -83,7 +83,8 @@ var ySpeed = 0;
 var z = -5.0;
 var filter = 0;
 ```
-与旋转、缩放、纹理过滤类型标记有关的全局变量。
+定义与旋转、缩放、纹理过滤类型标记有关的全局变量。
+
 ```javascript
 var currentlyPressedKeys = {};
 function handleKeyDown(event)
