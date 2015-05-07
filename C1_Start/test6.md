@@ -43,7 +43,7 @@ function handleLoadedTexture(textures)
 
 	gl.bindTexture(gl.TEXTURE_2D, textures[1]);
 	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA,
-		gl.UNSIGNED_BYTE, textures[0].image);
+		gl.UNSIGNED_BYTE, textures[1].image);
 	gl.texParameteri(gl.TEXTURE_2D,
 		gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 	gl.texParameteri(gl.TEXTURE_2D,
@@ -51,7 +51,7 @@ function handleLoadedTexture(textures)
 
 	gl.bindTexture(gl.TEXTURE_2D, textures[2]);
 	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA,
-		gl.UNSIGNED_BYTE, textures[0].image);
+		gl.UNSIGNED_BYTE, textures[2].image);
 	gl.texParameteri(gl.TEXTURE_2D,
 		gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 	gl.texParameteri(gl.TEXTURE_2D,
