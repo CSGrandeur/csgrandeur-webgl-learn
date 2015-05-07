@@ -8,6 +8,7 @@
    * [来点真正的3D](C1_Start/test4.md)
    * [引入纹理](C1_Start/test5.md)
    * [键盘交互与纹理过滤](C1_Start/test6.md)
+   * 方向光与环境光
 * [附录1：完整代码](src/README.md)
    * [三角与矩形](src/test1_code.md)
    * [添加颜色](src/test2_code.md)
