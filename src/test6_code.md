@@ -3,8 +3,8 @@
 <div class="page-header"><h3>6、键盘输入与纹理过滤</h3></div>
 
 <canvas id = "test06-canvas" width = "800" height = "600"></canvas>
-<li>Page Up/Page Down控制缩小/放大</li>
-<li>上下左右键控制旋转速度</li>
+<li>逗号/句号 控制 靠近/远离</li>
+<li>WSAD键控制四个方向旋转速度</li>
 <li>F键控制纹理过滤类型切换</li>
 <script id = "shader-vs" type = "x-shader/x-vertex">
 	attribute vec3 aVertexPosition;
@@ -366,34 +366,34 @@ function handleKeyUp(event)
 }
 function handleKeys()
 {
-	if(currentlyPressedKeys[33])
+	if(currentlyPressedKeys[190])
 	{
-		//Page Up
+		//"."/">"句号键
 		z -= 0.05;
 	}
-	if(currentlyPressedKeys[34])
+	if(currentlyPressedKeys[188])
 	{
-		//Page Down
+		//","/"<"逗号键
 		z += 0.05;
 	}
-	if(currentlyPressedKeys[37])
+	if(currentlyPressedKeys[65])
 	{
-		//向左箭头
+		//A
 		ySpeed -= 1;
 	}
-	if(currentlyPressedKeys[39])
+	if(currentlyPressedKeys[68])
 	{
-		//向右箭头
+		//D
 		ySpeed += 1;
 	}
-	if(currentlyPressedKeys[38])
+	if(currentlyPressedKeys[87])
 	{
-		//向上箭头
+		//W
 		xSpeed -= 1;
 	}
-	if(currentlyPressedKeys[40])
+	if(currentlyPressedKeys[83])
 	{
-		//向下箭头
+		//S
 		xSpeed += 1;
 	}	
 }
