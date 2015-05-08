@@ -105,36 +105,36 @@ function handleKeyUp(event)
 }
 function handleKeys()
 {
-	if(currentlyPressedKeys[33])
+	if(currentlyPressedKeys[190])
 	{
-		//Page Up
+		//"."/">"句号键
 		z -= 0.05;
 	}
-	if(currentlyPressedKeys[34])
+	if(currentlyPressedKeys[188])
 	{
-		//Page Down
+		//","/"<"逗号键
 		z += 0.05;
 	}
-	if(currentlyPressedKeys[37])
+	if(currentlyPressedKeys[65])
 	{
-		//向左箭头
+		//A
 		ySpeed -= 1;
 	}
-	if(currentlyPressedKeys[39])
+	if(currentlyPressedKeys[68])
 	{
-		//向右箭头
+		//D
 		ySpeed += 1;
 	}
-	if(currentlyPressedKeys[38])
+	if(currentlyPressedKeys[87])
 	{
-		//向上箭头
+		//W
 		xSpeed -= 1;
 	}
-	if(currentlyPressedKeys[40])
+	if(currentlyPressedKeys[83])
 	{
-		//向下箭头
+		//S
 		xSpeed += 1;
-	}
+	}	
 }
 function tick()
 {
