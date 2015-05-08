@@ -8,9 +8,7 @@
 
 ### WebGL是什么
 
-HTML5是当前HTML的新标准，其中一个特性就可以用JavaScript写调用显卡的程序，在新的网页元素Canvas上显示华丽的3D效果。
-
-Canvas是一个HTML元素，用JavaScript来进行操作。所以开发WebGL主要使用 JavaScript语言。
+HTML5是当前HTML的新标准，其中一个特性就可以用JavaScript写调用显卡的程序，在新的网页元素Canvas上显示华丽的3D效果，开发WebGL主要使用 JavaScript语言。
 
 我学WebGL目前有两点目的：
  1. Web应该是跨平台最舒服的手段了，没有哪个现代操作系统（哪怕手机系统）不配浏览器吧，HTML5的到来，感觉Web前途一片光明。
