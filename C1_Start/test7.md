@@ -42,6 +42,70 @@ Phong光照模型把这些类型综合在一起，所有的光具有两个特性
 * 为每个顶点保存一个法向量。
 * 设定一个方向光的方向向量。
 * 在顶点着色器中，对每个顶点计算表面方向与光的夹角并算出一个合适的RGB，再加上环境光的RGB。
+```html
+<input type="checkbox" id="lighting" checked /> 使用光照
+<br/>
+(逗号/句号 控制 靠近/远离，WSAD键控制四个方向旋转速度)
+<br/>
+<h4>方向光:</h4>
+<table>
+	<tr>
+		<td><b>方向:</b></td>
+		<td>X: <input type="text" id="lightDirectionX" value="-0.25" /></td>
+		<td>Y: <input type="text" id="lightDirectionY" value="-0.25" /></td>
+		<td>Z: <input type="text" id="lightDirectionZ" value="-1.0" /></td>
+	</tr>
+	<tr>
+		<td><b>颜色:</b></td>
+		<td>R: <input type="text" id="directionalR" value="0.8" /></td>
+		<td>G: <input type="text" id="directionalG" value="0.8" /></td>
+		<td>B: <input type="text" id="directionalB" value="0.8" /></td>
+	</tr>
+</table>
+<h4>环境光:</h4>
+<table style="border: 0; padding: 10px;">
+	<tr>
+		<td><b>颜色:</b></td>
+		<td>R: <input type="text" id="ambientR" value="0.2" /></td>
+		<td>G: <input type="text" id="ambientG" value="0.2" /></td>
+		<td>B: <input type="text" id="ambientB" value="0.2" /></td>
+	</tr>
+</table>
+```
+在网页上加入光照开关、设置方向光方向与RGB、设置环境光RGB的控件。
+```html
+
+<script id = "shader-vs" type = "x-shader/x-vertex">
+    //...
+	attribute vec3 aVertexNormal;
+	uniform mat3 uNMatrix;
+
+	uniform bool uUseLighting;
+	varying vec3 vLightWeighting;
+
+	uniform vec3 uAmbientColor;
+	uniform vec3 uLightingDirection;
+	uniform vec3 uDirectionalColor;
+
+	void main(void)
+	{
+	    //...
+		if(!uUseLighting)
+		{
+			vLightWeighting = vec3(1.0, 1.0, 1.0);
+		}
+		else
+		{
+			vec3 transformedNormal =
+			    uNMatrix * aVertexNormal;
+			float directionalLightWeighting =
+			    max(dot(transformedNormal, uLightingDirection), 0.0);
+			vLightWeighting =
+			    uAmbientColor + uDirectionalColor * directionalLightWeighting;
+		}
+	}
+</script>
+```
 
 ```javascript
 var cubeVertexNormalBuffer;
@@ -116,6 +180,9 @@ function drawScene()
 
 	var lighting = $("#lighting").is(":checked");
     gl.uniform1i(shaderProgram.useLightingUniform, lighting);
+```
+从
+```javascript
 	if(lighting)
 	{
 		gl.uniform3f(
