@@ -74,7 +74,6 @@ Phong光照模型把这些类型综合在一起，所有的光具有两个特性
 ```
 在网页上加入光照开关、设置方向光方向与RGB、设置环境光RGB的控件。
 ```html
-
 <script id = "shader-vs" type = "x-shader/x-vertex">
     //...
 	attribute vec3 aVertexNormal;
