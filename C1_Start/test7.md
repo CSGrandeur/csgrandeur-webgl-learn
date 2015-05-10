@@ -190,7 +190,7 @@ function initBuffers()
     //...
 }
 ```
-很熟悉了，每个顶点再加一个属性——用来计算光的反射效果的方向向量。
+很熟悉了，每个顶点再加一个属性——用来计算光的反射效果的法线向量。
 
 ```javascript
 function drawScene()
@@ -200,7 +200,7 @@ function drawScene()
 	gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute,
 		cubeVertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 ```
-把顶点向量发给shader里对应的变量。
+把顶点法线向量发给shader里对应的变量。
 ```javascript
     //..
 	gl.activeTexture(gl.TEXTURE0);
