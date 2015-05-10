@@ -66,8 +66,10 @@
 		else
 		{
 			vec3 transformedNormal = uNMatrix * aVertexNormal;
-			float directionalLightWeighting = max(dot(transformedNormal, uLightingDirection), 0.0);
-			vLightWeighting = uAmbientColor + uDirectionalColor * directionalLightWeighting;
+			float directionalLightWeighting = 
+				max(dot(transformedNormal, uLightingDirection), 0.0);
+			vLightWeighting = 
+				uAmbientColor + uDirectionalColor * directionalLightWeighting;
 		}
 	}
 </script>
