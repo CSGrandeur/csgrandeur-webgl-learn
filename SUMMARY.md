@@ -16,5 +16,5 @@
    * [来点真正的3D](src/test4_code.md)
    * [引入纹理](src/test5_code.md)
    * [键盘交互与纹理过滤](src/test6_code.md)
-   * 方向光与环境光
+   * [方向光与环境光](src/test7_code.md)
 
