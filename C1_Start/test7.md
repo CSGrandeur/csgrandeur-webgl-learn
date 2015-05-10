@@ -43,6 +43,103 @@ Phong光照模型把这些类型综合在一起，所有的光具有两个特性
 * 设定一个方向光的方向向量。
 * 在顶点着色器中，对每个顶点计算表面方向与光的夹角并算出一个合适的RGB，再加上环境光的RGB。
 
+```javascript
+var cubeVertexNormalBuffer;
+function initBuffers()
+{
+    //...
+	cubeVertexNormalBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
+	var vertexNormals = [
+					  // 正面
+						0.0,  0.0,  1.0,
+						0.0,  0.0,  1.0,
+						0.0,  0.0,  1.0,
+						0.0,  0.0,  1.0,
 
+					  // 背面
+						0.0,  0.0, -1.0,
+						0.0,  0.0, -1.0,
+						0.0,  0.0, -1.0,
+						0.0,  0.0, -1.0,
 
+					  // 顶部
+						0.0,  1.0,  0.0,
+						0.0,  1.0,  0.0,
+						0.0,  1.0,  0.0,
+						0.0,  1.0,  0.0,
 
+					  // 底部
+						0.0, -1.0,  0.0,
+						0.0, -1.0,  0.0,
+						0.0, -1.0,  0.0,
+						0.0, -1.0,  0.0,
+
+					  // 右侧面
+						1.0,  0.0,  0.0,
+						1.0,  0.0,  0.0,
+						1.0,  0.0,  0.0,
+						1.0,  0.0,  0.0,
+
+					  // 左侧面
+					  -1.0,  0.0,  0.0,
+					  -1.0,  0.0,  0.0,
+					  -1.0,  0.0,  0.0,
+					  -1.0,  0.0,  0.0,
+					];
+	gl.bufferData(gl.ARRAY_BUFFER,
+	    new Float32Array(vertexNormals), gl.STATIC_DRAW);
+	cubeVertexNormalBuffer.itemSize = 3;
+	cubeVertexNormalBuffer.numItems = 24;
+    //...
+}
+```
+很熟悉了，每个顶点再加一个属性——用来计算光的反射效果的方向向量。
+
+```javascript
+function drawScene()
+{
+    //...
+	gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
+	gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute,
+		cubeVertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
+```
+把顶点向量发给shader里对应的变量。
+```javascript
+    //..
+	gl.activeTexture(gl.TEXTURE0);
+	gl.bindTexture(gl.TEXTURE_2D, crateTexture);
+	gl.uniform1i(shaderProgram.samplerUniform, 0);
+```
+纹理直接用MIPMAP那个方案，不再给三个切换。
+```javascript
+
+	var lighting = $("#lighting").is(":checked");
+    gl.uniform1i(shaderProgram.useLightingUniform, lighting);
+	if(lighting)
+	{
+		gl.uniform3f(
+			shaderProgram.ambientColorUniform,
+			parseFloat($("#ambientR").val()),
+			parseFloat($("#ambientG").val()),
+			parseFloat($("#ambientB").val())
+			);
+		var lightingDirection = [
+			parseFloat($("#lightDirectionX").val()),
+			parseFloat($("#lightDirectionY").val()),
+			parseFloat($("#lightDirectionZ").val())
+			];
+		var adjustedLD = vec3.create();
+		vec3.normalize(adjustedLD, lightingDirection);
+		vec3.scale(adjustedLD, adjustedLD, -1);
+		gl.uniform3fv(shaderProgram.lightingDirectionUniform, adjustedLD);
+		gl.uniform3f(
+			shaderProgram.directionalColorUniform,
+			parseFloat($("#directionalR").val()),
+			parseFloat($("#directionalG").val()),
+			parseFloat($("#directionalB").val())
+			);
+	}
+	//..
+}
+```
