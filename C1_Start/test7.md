@@ -72,7 +72,8 @@ Phong光照模型把这些类型综合在一起，所有的光具有两个特性
 	</tr>
 </table>
 ```
-在网页上加入光照开关、设置方向光方向与RGB、设置环境光RGB的控件。
+在网页上加入光照开关、设置方向光方向与RGB、设置环境光RGB增益的控件。
+
 ```html
 <script id = "shader-vs" type = "x-shader/x-vertex">
     //...
@@ -95,8 +96,7 @@ Phong光照模型把这些类型综合在一起，所有的光具有两个特性
 		}
 		else
 		{
-			vec3 transformedNormal =
-			    uNMatrix * aVertexNormal;
+			vec3 transformedNormal = uNMatrix * aVertexNormal;
 			float directionalLightWeighting =
 			    max(dot(transformedNormal, uLightingDirection), 0.0);
 			vLightWeighting =
@@ -105,7 +105,32 @@ Phong光照模型把这些类型综合在一起，所有的光具有两个特性
 	}
 </script>
 ```
+新的顶点着色器。
 
+aVertexNormal是顶点的法线向量。
+
+uNMatrix（Mat3）是向量的变换矩阵，向量不能直接使用顶点变换矩阵uMVMatrix（Mat4）。想一下如果向量是(1,0,0)，而顶点平移(-1,0,0)，那向量就变成了(0,0,0)，这显然是不合理的。向量方向要随顶点旋转，但不可因平移而改变，于是需要一个独立的，又跟随uMVMatrix改变而改变的矩阵用来对法线向量做变化，取模型-视图矩阵的左上3*3部分的逆矩阵的转置作为uNMatrix。至于为什么这样，这又是数学问题了。
+
+uUseLighting标记是否使用光照，vLightWeighting是光照效果的和，uAmbientColor是环境光RGB增益，uLightingDirection是方向光方向，uDirectionalColor是方向光RGB增益。
+
+dot()是点积，两向量对应位置的元素的乘积的和，或者两向量模的积乘以它们夹角的余弦值。根据光照模型，方向光照射在一点的反射强度由光的方向向量与该位置法线向量夹角的余弦决定，而当两向量都为单位向量时，余弦与点积相等。
+
+总的光照RGB增益就是两种光增益的和。
+
+```html
+<script id = "shader-fs" type = "x-shader/x-fragment">
+    //...
+	varying vec3 vLightWeighting;
+
+	void main(void)
+	{
+	    //...
+		gl_FragColor =
+			vec4(textureColor.rgb * vLightWeighting, textureColor.a);
+	}
+</script>
+```
+新的片元着色器，使用顶点着色器计算好的、插值后的RGB增益调整纹理颜色。这里增益是个三维量，所以把textureColor拆开计算，再还原为四维量。
 ```javascript
 var cubeVertexNormalBuffer;
 function initBuffers()
@@ -180,7 +205,7 @@ function drawScene()
 	var lighting = $("#lighting").is(":checked");
     gl.uniform1i(shaderProgram.useLightingUniform, lighting);
 ```
-从
+从开关控件获取用户的设置——是否使用光照，并把这个bool变量传给shader里的useLightingUniform。
 ```javascript
 	if(lighting)
 	{
@@ -209,3 +234,21 @@ function drawScene()
 	//..
 }
 ```
+把两种光的相关参数从网页上用户在控件的输入传给shader。特别的对于方向向量，由于要用点积计算与法线向量的余弦，需要归一化处理（normalize）为单位向量，另外光是“向里射”，而法线是“向外”的，要让点积得正数（算锐角），就再把光的方向反向（scale乘-1）。
+
+```javascript
+function setMatrixUniforms()
+{
+    //...
+	var normalMatrix = mat3.create();
+
+	mat3.fromMat4(normalMatrix, mvMatrix);
+	mat3.invert(normalMatrix, normalMatrix);
+	mat3.transpose(normalMatrix, normalMatrix);
+
+	gl.uniformMatrix3fv(shaderProgram.nMatrixUniform, false, normalMatrix);
+}
+```
+如前面所说的，对法线向量的变换矩阵uNMatrix，要取模型-视图矩阵的左上3*3部分的逆矩阵的转置。
+
+于是这一节增删改的代码都有了，参考附录1完整代码了解整体情况吧。
