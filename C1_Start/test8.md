@@ -73,7 +73,7 @@ gl.SRC_ALPHA表示使用源颜色的alpha值作为因子，gl.ONE表示用1.0作
 设源颜色为Color<sub>s</sub> = (R<sub>s</sub>, G<sub>s</sub>, B<sub>s</sub>, A<sub>s</sub>)，目标颜色为Color<sub>d</sub> = (R<sub>d</sub>, G<sub>d</sub>, B<sub>d</sub>, A<sub>d</sub>)，则按照我们这里使用的参数，计算结果为：
 Color<sub>result</sub> = Color<sub>s</sub> * A<sub>s</sub> + Color<sub>d</sub>
 
-这不会是产生透明效果最好的方法，不过在这个例子中效果还不错。
+这种方式不会是产生透明效果最好的方法，不过在这个例子中效果还不错。
 
 理清一个概念：透明的视觉效果不能和颜色参数中“不透明度”混淆，并不是说把“前面物体”的Alpha降低，“后面物体”就能被看到，那是“上帝算法”。计算机图形中的透明是通过两个物体颜色的合理混合，得到一个颜色作为结果，产生的半透明效果，如果想理解为“视觉欺骗”也无不可。
 ```javascript
