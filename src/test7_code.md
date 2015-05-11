@@ -3,7 +3,7 @@
 ```html
 <div class="page-header"><h3>7、方向光与环境光</h3></div>
 
-<canvas id = "test07-canvas" width = "400" height = "300"></canvas>
+<canvas id = "test07-canvas" width = "800" height = "600"></canvas>
 
 <br/>
 <input type="checkbox" id="lighting" checked /> 使用光照
