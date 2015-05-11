@@ -22,7 +22,6 @@
 >图9
 
 ```html
-<br/>
 <input type="checkbox" id="blending" checked /> 使用混合
 <br/>
 不透明度（Alpha）级别 <input type="text" id="alpha" value="0.5" /><br/>
