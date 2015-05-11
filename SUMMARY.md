@@ -9,7 +9,7 @@
    * [引入纹理](C1_Start/test5.md)
    * [键盘交互与纹理过滤](C1_Start/test6.md)
    * [方向光与环境光](C1_Start/test7.md)
-   * [深度缓冲，透明度与混合](C1_Start/test9.md)
+   * [深度缓冲，透明度与混合](C1_Start/test8.md)
 * [附录1：完整代码](src/README.md)
    * [三角与矩形](src/test1_code.md)
    * [添加颜色](src/test2_code.md)
