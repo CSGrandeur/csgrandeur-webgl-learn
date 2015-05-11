@@ -18,4 +18,5 @@
    * [引入纹理](src/test5_code.md)
    * [键盘交互与纹理过滤](src/test6_code.md)
    * [方向光与环境光](src/test7_code.md)
+   * 深度缓冲，透明度与混合
 
