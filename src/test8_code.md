@@ -2,7 +2,7 @@
 ```html
 <div class="page-header"><h3>8、深度缓冲，透明度与混合</h3></div>
 
-<canvas id = "test08-canvas" width = "400" height = "300"></canvas>
+<canvas id = "test08-canvas" width = "800" height = "600"></canvas>
 <br/>
 <input type="checkbox" id="blending" checked /> 使用混合
 <br/>
