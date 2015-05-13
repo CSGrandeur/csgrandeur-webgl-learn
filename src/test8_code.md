@@ -117,7 +117,7 @@ function webGLStart()
 
 	gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.enable(gl.DEPTH_TEST);
-	//gl.depthFunc(gl.LESS);
+//  gl.depthFunc(gl.LESS);
 //	setTimeout("tick()", 100);
 
 	$(document).keydown(handleKeyDown);
