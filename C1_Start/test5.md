@@ -13,7 +13,7 @@
 
 >图5
 
-演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/1.html
+演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/5.html
 
 
 ```javascript
