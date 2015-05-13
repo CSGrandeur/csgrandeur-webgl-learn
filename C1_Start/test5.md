@@ -42,6 +42,7 @@ function initTexture()
 	myTexture.image.onload = function()
 	{
 		handleLoadedTexture(myTexture);
+		tick();
 	}
 	myTexture.image.src = "/Public/image/mytexture.jpg";
 }
