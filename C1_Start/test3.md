@@ -6,6 +6,8 @@ WebGL也是这样，我们每隔很小的一段时间，往canvas上画一遍和
 
 效果如图3。
 
+演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/3.html
+
 >![图3](../image/C1_Start/1_003.gif)
 
 >图3
