@@ -7,6 +7,8 @@
 
 >图1
 
+演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/1.html
+
 ### 放控件
 首先把canvas放到网页上
 ```html
