@@ -7,7 +7,6 @@
 
 >图6
 
-演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/6.html
 
 用四个方向键控制绕x轴和绕y轴的旋转，Page Up和Page Down键控制z轴方向上的放大与缩小，用F键在三种纹理过滤类型间切换。
 
