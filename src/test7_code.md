@@ -114,7 +114,7 @@ function webGLStart()
 	gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.enable(gl.DEPTH_TEST);
 	
-	setTimeout("tick()", 100);
+//	setTimeout("tick()", 100);
 
 	$(document).keydown(handleKeyDown);
 	$(document).keyup(handleKeyUp);
@@ -150,6 +150,7 @@ function initTexture()
 	crateTexture.image.onload = function()
 	{
 		handleLoadedTexture(crateTexture);
+		tick();
 	}
 	crateTexture.image.src = "/Public/image/crate.gif";
 }
