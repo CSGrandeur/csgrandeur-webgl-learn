@@ -27,7 +27,7 @@
 	uniform sampler2D uSampler;
 
 	void main(void)
-	{
+	{ 
 		gl_FragColor =
 			texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
 	}
@@ -58,8 +58,7 @@ function webGLStart()
 	gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.enable(gl.DEPTH_TEST);
 
-	setTimeout("tick()", 100);
-// 	tick();
+//	setTimeout("tick()", 100);
 }
 var myTexture;
 function initTexture()
@@ -69,6 +68,7 @@ function initTexture()
 	myTexture.image.onload = function()
 	{
 		handleLoadedTexture(myTexture);
+		tick();
 	}
 	myTexture.image.src = "/Public/image/mytexture.jpg";
 }
