@@ -32,7 +32,6 @@ function webGLStart()
 
 我猜应该是JS异步执行这个特点造成的，纹理加载需要时间，在纹理还没加载完成的时候就开始绘制了，于是有了这个提示。用JS的setTimeout简单处理了一下，大意就是等“一小会儿”再绘制。不过这个方法还是不稳定，网页响应慢的话还是会WARNING。最后把tick()改到下面读取纹理加载图片的响应函数里了。
 
-
 ```javascript
 var myTexture;
 function initTexture()
