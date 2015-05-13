@@ -6,6 +6,8 @@
 
 >图2
 
+演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/2.html
+
 在着色器中添加与颜色有关的代码，并对应修改相关函数与着色器变量的关系。
 
 首先是顶点着色器。
