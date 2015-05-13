@@ -47,7 +47,7 @@ function initTexture()
 	myTexture.image.src = "/Public/image/mytexture.jpg";
 }
 ```
-先用createTexture()建立一个纹理对象给myTexture，再让myTexture随身携带它的纹理的图片，是一个JS的image对象。为这个image对象的onload事件指定触发我们处理纹理的函数handleLoadedTexture()。
+先用createTexture()建立一个纹理对象给myTexture，再让myTexture随身携带它的纹理的图片，是一个JS的image对象。为这个image对象的onload事件指定触发我们处理纹理的函数handleLoadedTexture()。tick()是从webGLStart()挪过来的，保证加载图片后再tick()，避免那个WARNING。
 
 之后设置image的地址，可以是自己服务器的相对地址也可以是网络上图片的地址。指定地址后浏览器就开始在后台异步获取这个图片，获取成功后就触发了onload事件。
 ```javascript
