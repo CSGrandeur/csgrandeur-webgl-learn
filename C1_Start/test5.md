@@ -22,7 +22,7 @@ function webGLStart()
 	initTexture();
 	////gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	////gl.enable(gl.DEPTH_TEST);
-	setTimeout("tick()", 100);
+	//setTimeout("tick()", 100);
     //tick();
 }
 ```
@@ -30,7 +30,7 @@ function webGLStart()
 
 >[.WebGLRenderingContext]RENDER WARNING: texture bound to texture unit 0 is not renderable. It maybe non-power-of-2 and have incompatible texture filtering or is not 'texture complete'
 
-我猜应该是JS异步执行这个特点造成的，纹理加载需要时间，在纹理还没加载完成的时候就开始绘制了，于是有了这个提示。用JS的setTimeout简单处理了一下，大意就是等“一小会儿”再绘制。也可以再加些标记什么的。这样WARNING就消失了。
+我猜应该是JS异步执行这个特点造成的，纹理加载需要时间，在纹理还没加载完成的时候就开始绘制了，于是有了这个提示。用JS的setTimeout简单处理了一下，大意就是等“一小会儿”再绘制。不过这个方法还是不稳定，网页响应慢的话还是会WARNING。最后把tick改到下面读取纹理加载图片的响应函数里了。
 
 
 ```javascript
