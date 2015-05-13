@@ -9,6 +9,8 @@
 
 演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/1.html
 
+演示页有一一对应的菜单，后面的章节不再专门放演示页的链接。
+
 ### 放控件
 首先把canvas放到网页上
 ```html
