@@ -9,6 +9,8 @@
 
 >图4
 
+演示页：http://csgrandeur.github.io/csgrandeur-webgl-learn/Application/Test/4.html
+
 之前几节的图形是一个面，而立体的图形是由多个面组成的，我们一个面一个面地给出顶点坐标，画上去就得到了三维图形。
 
 在绘制正方体的时候，我们增加一个索引。原因是：
