@@ -39,7 +39,7 @@ HTML5是当前HTML的新标准，其中一个特性就可以用JavaScript写调�
 
 对应的Github主页：https://github.com/CSGrandeur/csgrandeur-webgl-learn
 
-代码演示：http://csgrandeur.github.io/csgrandeur-webgl-learn
+代码演示：http://csgrandeur.github.io/WebGL_Learn_Code
 
 初学者，难免有错误与疏漏，欢迎指正。
 
