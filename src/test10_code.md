@@ -1,9 +1,8 @@
 # 加载一个世界，基本相机操作
-
 ```html
 <div class="page-header"><h3>10、加载场景，基本相机操作</h3></div>
 
-<canvas id = "test10-canvas" width = "400" height = "300"></canvas>
+<canvas id = "test10-canvas" width = "800" height = "600"></canvas>
 <div id="loadingtext">正在加载世界……</div>
 <br/>
 (WSAD控制移动，逗号/句号 控制 上下看)
