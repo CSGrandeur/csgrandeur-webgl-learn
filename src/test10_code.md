@@ -1,9 +1,9 @@
 # 加载一个世界，基本相机操作
 
 ```html
-<div class="page-header"><h3>10、加载一个世界，基本相机操作</h3></div>
+<div class="page-header"><h3>10、加载场景，基本相机操作</h3></div>
 
-<canvas id = "test10-canvas" width = "800" height = "600"></canvas>
+<canvas id = "test10-canvas" width = "400" height = "300"></canvas>
 <div id="loadingtext">正在加载世界……</div>
 <br/>
 (WSAD控制移动，逗号/句号 控制 上下看)
@@ -72,51 +72,45 @@ function tick()
 }
 function loadWorld()
 {
-	$.get(
-		"/Public/files/world.txt", 
+	$.getJSON(
+		"/Public/json/world.json", 
 		function(data)
 		{
 			handleLoadedWorld(data);
-		},
-		"text"
+		}
 	);
 }
 var worldVertexPositionBuffer = null;
 var worldVertexTextureCoordBuffer = null;
 function handleLoadedWorld(data)
 {
-	var lines = data.split("\\n");
 	var vertexCount = 0;
 	var vertexPositions = [];
 	var vertexTextureCoords = [];
-	for(var i in lines)
+	
+	for(var i = 0; typeof(data[i]) != "undefined"; i ++)
 	{
-		var vals = lines[i].replace(/^\\s+/, "").split(/\\s+/);
-		if(vals.length >= 5 && vals[0] != "//")
-		{
-			//这是描述一个点的一行，先得到X,Y,Z
-			vertexPositions.push(parseFloat(vals[0]));
-			vertexPositions.push(parseFloat(vals[1]));
-			vertexPositions.push(parseFloat(vals[2]));
-			//然后是纹理坐标
-			vertexTextureCoords.push(parseFloat(vals[3]));
-			vertexTextureCoords.push(parseFloat(vals[4]));
-			vertexCount ++;
-		}
+		//环境中一个部分的顶点坐标
+		vertexPositions = 
+			vertexPositions.concat(data[i].vertexPositions);
+		//然后是纹理坐标
+		vertexTextureCoords = 
+			vertexTextureCoords.concat(data[i].vertexTextureCoords);
+		vertexCount ++;
 	}
 	worldVertexPositionBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, worldVertexPositionBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, 
 		new Float32Array(vertexPositions), gl.STATIC_DRAW);
 	worldVertexPositionBuffer.itemSize = 3;
-	worldVertexPositionBuffer.numItems = vertexCount;
+	worldVertexPositionBuffer.numItems = data.vertexCount;
 	
 	worldVertexTextureCoordBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, worldVertexTextureCoordBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, 
 		new Float32Array(vertexTextureCoords), gl.STATIC_DRAW);
 	worldVertexTextureCoordBuffer.itemSize = 2;
-	worldVertexTextureCoordBuffer.numItems = vertexCount;
+	worldVertexTextureCoordBuffer.numItems = data.vertexCount;
 
 	$("#loadingtext").text("");
 }
@@ -158,7 +152,9 @@ function handleLoadedTexture(texture)
 	gl.texParameteri(gl.TEXTURE_2D, 
 		gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 	gl.texParameteri(gl.TEXTURE_2D, 
-		gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+		gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST);
+
+	gl.generateMipmap(gl.TEXTURE_2D);
 	
 	gl.bindTexture(gl.TEXTURE_2D, null);
 }
@@ -298,6 +294,16 @@ function handleKeyUp(event)
 	currentlyPressedKeys[event.keyCode] = false;
 }
 
+var pitch = 0;
+var pitchRate = 0;
+
+var yaw = 0;
+var yawRate = 0;
+var xPos = 0;
+var yPos = 0.4;
+var zPos = 0;
+
+var speed = 0;
 function handleKeys()
 {
 	if(currentlyPressedKeys[188])
@@ -376,16 +382,6 @@ function drawScene()
 	setMatrixUniforms();
 	gl.drawArrays(gl.TRIANGLES, 0, worldVertexPositionBuffer.numItems);
 }
-var pitch = 0;
-var pitchRate = 0;
-
-var yaw = 0;
-var yawRate = 0;
-var xPos = 0;
-var yPos = 0.4;
-var zPos = 0;
-
-var speed = 0;
 
 function degToRad(degrees)
 {
