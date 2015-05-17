@@ -182,5 +182,4 @@ function drawScene()
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
 }
 </script>
-
 ```
