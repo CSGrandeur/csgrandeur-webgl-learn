@@ -151,7 +151,8 @@ function initBuffers()
 	        	 1.0, -1.0,  0.0,
 	        	-1.0, -1.0,  0.0
 	        	];
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+	gl.bufferData(gl.ARRAY_BUFFER, 
+		new Float32Array(vertices), gl.STATIC_DRAW);
 	squareVertexPositionBuffer.itemSize = 3;
 	squareVertexPositionBuffer.numItems = 4;
 		 
@@ -181,4 +182,5 @@ function drawScene()
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
 }
 </script>
+
 ```
