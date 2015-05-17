@@ -19,7 +19,7 @@ function webGLStart()
 	$(document).mousemove(handleMouseMove);
 }
 ````
-类似键盘事件，让鼠标事件触发我们的函数。这里鼠标按下绑定的canvas，表示在canvas外面按下鼠标是没有效果的，而鼠标移动依然是$(document)，在canvas内按下鼠标之后移出canvas依然可以保持交互效果。可以把canvas和$(document)相互修改一下试试效果。
+类似键盘事件，让鼠标事件触发我们的函数。这里鼠标按下事件绑定的canvas，表示在canvas外面按下鼠标是没有效果的，而鼠标移动事件依然是$(document)，在canvas内按下鼠标之后移出canvas依然可以保持交互效果。可以把canvas和$(document)相互修改一下试试效果。
 
 ```javascript
 var moonVertexPositionBuffer;
