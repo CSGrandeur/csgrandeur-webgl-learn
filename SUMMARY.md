@@ -12,7 +12,7 @@
    * [深度缓冲，透明度与混合](C1_Start/test8.md)
    * [优化代码结构，多物体运动](C1_Start/test9.md)
    * [加载场景，基本相机操作](C1_Start/test10.md)
-   * 球、旋转矩阵、鼠标事件
+   * [球、旋转矩阵、鼠标事件](C1_Start/test11.md)
 * [附录1：完整代码](src/README.md)
    * [三角与矩形](src/test1_code.md)
    * [添加颜色](src/test2_code.md)
