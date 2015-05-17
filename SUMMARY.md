@@ -24,5 +24,5 @@
    * [深度缓冲，透明度与混合](src/test8_code.md)
    * [优化代码结构，多物体运动](src/test9_code.md)
    * [加载场景，基本相机操作](src/test10_code.md)
-   * 球、旋转矩阵、鼠标事件
+   * [球、旋转矩阵、鼠标事件](src/test11_code.md)
 
