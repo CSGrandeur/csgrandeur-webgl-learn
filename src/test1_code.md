@@ -1,10 +1,6 @@
 # 三角与矩形
 
 ```html
-<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
-<script src="http://cdn.bootcss.com/gl-matrix/2.2.1/gl-matrix-min.js"></script>
-
-
 <div class="page-header"><h3>1、三角与矩形</h3></div>
 
 <canvas id = "test01-canvas" width = "800" height = "600"></canvas>
@@ -39,10 +35,10 @@ function webGLStart()
 	initGL(canvas);
 	initShaders();
 	initBuffers();
-
+	
 	gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.enable(gl.DEPTH_TEST);
-
+	
 	drawScene();
 }
 
@@ -51,8 +47,7 @@ function initGL(canvas)
 {
 	try
 	{
-		gl = canvas.getContext("webgl") || 
-		    canvas.getContext("experimental-webgl");
+		gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 		gl.viewportWidth = canvas.width;
 		gl.viewportHeight = canvas.height;
 	}catch(e){}
@@ -70,7 +65,7 @@ function getShader(gl, id)
 		return null;
 	}
 	var str = shaderScript.text();
-
+	
 	var shader;
 	if(shaderScript[0].type == "x-shader/x-fragment")
 	{
@@ -111,11 +106,13 @@ function initShaders()
 	gl.useProgram(shaderProgram);
 
 	shaderProgram.vertexPositionAttribute = 
-	    gl.getAttribLocation(shaderProgram, "aVertexPosition");
+		gl.getAttribLocation(shaderProgram, "aVertexPosition");
 	gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 
-	shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
-	shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
+	shaderProgram.pMatrixUniform = 
+		gl.getUniformLocation(shaderProgram, "uPMatrix");
+	shaderProgram.mvMatrixUniform = 
+		gl.getUniformLocation(shaderProgram, "uMVMatrix");
 }
 
 
@@ -141,7 +138,8 @@ function initBuffers()
 	            	-1.0, -1.0,  0.0,
 	            	 1.0, -1.0,  0.0
 	            	 ];
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+	gl.bufferData(gl.ARRAY_BUFFER, 
+		new Float32Array(vertices), gl.STATIC_DRAW);
 	triangleVertexPositionBuffer.itemSize = 3;
 	triangleVertexPositionBuffer.numItems = 3;
 
@@ -156,30 +154,32 @@ function initBuffers()
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 	squareVertexPositionBuffer.itemSize = 3;
 	squareVertexPositionBuffer.numItems = 4;
-
+		 
 }
 function drawScene()
 {
 	gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-	mat4.perspective(pMatrix, 45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
-
+	
+	mat4.perspective(pMatrix, 45, 
+		gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
+	
 	mat4.identity(mvMatrix);
-
+	
 	mat4.translate(mvMatrix, mvMatrix, [-1.5, 0.0, -7.0]);
 	gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
 	gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
-	    triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+		triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 	setMatrixUniforms();
 	gl.drawArrays(gl.TRIANGLES, 0, triangleVertexPositionBuffer.numItems);
 
     mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0,  0.0]);
     gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
-        squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+    	squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
     setMatrixUniforms();
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
 }
 </script>
+
 ```
