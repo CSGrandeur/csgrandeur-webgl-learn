@@ -705,6 +705,5 @@ function animate()
 	}
 	lastTime = timeNow;
 }
-
 </script>
 ```
