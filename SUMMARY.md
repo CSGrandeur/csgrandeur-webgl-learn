@@ -2,7 +2,7 @@
 
 * [简介](README.md)
 * [起步](C1_Start/README.md)
-   * [三角与矩形](/C1_Start/test1.md)
+   * [三角与矩形](C1_Start/test1.md)
    * [添加颜色](C1_Start/test2.md)
    * [一点运动](C1_Start/test3.md)
    * [来点真正的3D](C1_Start/test4.md)
@@ -14,6 +14,7 @@
    * [加载场景，基本相机操作](C1_Start/test10.md)
    * [球、旋转矩阵、鼠标事件](C1_Start/test11.md)
    * [点光源](C1_Start/test12.md)
+   * 逐片元光照，多着色方案切换
 * [附录1：完整代码](src/README.md)
    * [三角与矩形](src/test1_code.md)
    * [添加颜色](src/test2_code.md)
