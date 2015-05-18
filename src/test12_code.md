@@ -157,6 +157,7 @@ function initGL(canvas)
 }
 
 var moonTexture;
+var crateTexture;
 function initTexture()
 {
 	moonTexture = gl.createTexture();
