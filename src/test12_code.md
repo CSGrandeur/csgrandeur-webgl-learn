@@ -685,9 +685,7 @@ function drawScene()
 	setMatrixUniforms();
 	gl.drawElements(gl.TRIANGLES, 
 		cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
-
-
-
+	mvPopMatrix();	
 }
 
 function degToRad(degrees)
