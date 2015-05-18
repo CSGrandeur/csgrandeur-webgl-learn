@@ -3,7 +3,7 @@
 ```html
 <div class="page-header"><h3>12、点光源</h3></div>
 
-<canvas id = "test11-canvas" width = "800" height = "600"></canvas>
+<canvas id = "test12-canvas" width = "800" height = "600"></canvas>
 
 <br/>
 <input type="checkbox" id="lighting" checked /> 使用光照
@@ -110,7 +110,7 @@ $(document).ready(function ()
 
 function webGLStart()
 {
-	var canvas = $("#test11-canvas");
+	var canvas = $("#test12-canvas");
 	initGL(canvas[0]);
 	initShaders();
 	initBuffers();
