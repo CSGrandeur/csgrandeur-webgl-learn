@@ -370,7 +370,7 @@ shaderProgram随身携带的，shader代码中“vertexPositionAttribute”变�
 ```javascript
 	gl.drawArrays(gl.TRIANGLES, 0, triangleVertexPositionBuffer.numItems);
 ```
-终于是真正的画了，画三角形，从绑定的buffer（triangleVertexPositionBuffer）内存相对地址0开始，画numItems（“随身携带”，我保证后面不再重复这个JS特性了。。）个点。
+终于是真正的画了，把给出的顶点数组当做三角形来画，从第0个item开始，画numItems（“随身携带”，我保证后面不再重复这个JS特性了。。）个。
 ```javascript
     mat4.translate(mvMatrix, mvMatrix, [ 3.0, 0.0,  0.0]);
     gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
