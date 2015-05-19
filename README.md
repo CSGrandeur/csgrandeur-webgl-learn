@@ -33,7 +33,7 @@ HTML5是当前HTML的新标准，其中一个特性就可以用JavaScript写调�
 
 这本书是我学习WebGL过程的记录，会根据学习的经验写成教程的形式。
 
-学习开始是跟着“Learning WebGL”走的，后面是否会按自己的思路来现在还不知道，可以先把这本书理解为“Learning WebGL”的中文版。
+第一章是“Learning WebGL”的内容，部分是翻译，部分是自己不懂的地方查阅资料补充的，也省略了一些觉得不必解释过细的内容，可以理解为“Learning WebGL”的一个中文版。之后学习的内容会开辟新的章节。
 
 这本书的GitBook主页：https://www.gitbook.com/book/csgrandeur/webgl-learn
 
@@ -41,7 +41,7 @@ HTML5是当前HTML的新标准，其中一个特性就可以用JavaScript写调�
 
 代码演示：http://csgrandeur.github.io/WebGL_Learn_Code
 
-初学者，难免有错误与疏漏，欢迎指正。
+初学者，难免有错误与疏漏，欢迎指正，我会及时修改更新。
 
 ### 参考
 [Learning WebGL](http://learningwebgl.com)
