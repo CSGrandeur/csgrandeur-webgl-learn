@@ -33,7 +33,7 @@
 	</tr>
 </table>
 <br/>
-月球表面纹理图片来自 
+月球表面纹理图片来自：
 <a href="http://maps.jpl.nasa.gov/">the Jet Propulsion Laboratory</a>.
 <script id = "shader-vs" type = "x-shader/x-vertex">
 	attribute vec3 aVertexPosition;
@@ -660,6 +660,5 @@ function animate()
 	}
 	lastTime = timeNow;
 }
-
 </script>
 ```
