@@ -30,5 +30,5 @@
    * [球、旋转矩阵、鼠标事件](src/test11_code.md)
    * [点光源](src/test12_code.md)
    * [逐片元光照，多着色方案切换](src/test13_code.md)
-   * src/test14_code.md
+   * [镜面高光](src/test14_code.md)
 
