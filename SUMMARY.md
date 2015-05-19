@@ -34,5 +34,5 @@
    * [逐片元光照，多着色方案切换](src/test13_code.md)
    * [镜面高光](src/test14_code.md)
    * [镜面地图](src/test15_code.md)
-   * 渲染到纹理
+   * [渲染到纹理](src/test16_code.md)
 
