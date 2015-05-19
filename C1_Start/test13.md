@@ -102,6 +102,38 @@
 	}
 </script>
 ```
-加入新的逐片元计算光照的shader。可以看到，顶点着色器的任务变少了，只需要计算好法向量。片元着色器得到差值后的法向量后，用类似逐顶点计算光照的顶点着色器的方法来计算光照增益。要注意的是差值后的法向量不一定是单位向量，我们需要对它normalize()一下。
+加入新的逐片元计算光照的shader。可以看到，顶点着色器的任务变少了，只需要计算好法向量。片元着色器得到差值后的法向量后，用类似逐顶点计算光照的顶点着色器的方法来计算光照增益。要注意的是差值后的法向量不一定是单位向量，我们需要把它normalize()一下。
+
+```javascript
+var currentProgram;
+var perVertexProgram;
+var perFragmentProgram;
+function initShaders()
+{
+	perVertexProgram =
+		createProgram("per-vertex-lighting-vs", "per-vertex-lighting-fs");
+	perFragmentProgram =
+		createProgram("per-fragment-lighting-vs", "per-fragment-lighting-fs");
+}
+```
+把之前的initShaders写成了createProgram这个用来调用的函数，分别加载两种着色器方案。
+
+```javascript
+function drawScene()
+{
+    //...
+	var perFragmentLighting = $("#per-fragment").is(":checked");
+	if(perFragmentLighting)
+	{
+		currentProgram = perFragmentProgram;
+	}
+	else
+	{
+		currentProgram = perVertexProgram;
+	}
+	gl.useProgram(currentProgram);
 
 
+}
+```
+不同的shader都加载编译链接好之后，就可以这样在绘制的时候切换了。
