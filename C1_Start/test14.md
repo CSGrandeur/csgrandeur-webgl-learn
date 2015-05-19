@@ -6,7 +6,7 @@
 
 >图19
 
-计算高光我们用逐片元着色，顶点shader不用修改，在片元shader中计算镜面高光。
+计算高光我们用逐片元计算，顶点shader不用修改，在片元shader中计算镜面高光。
 ```html
 <script id = "per-fragment-lighting-fs" type = "x-shader/x-fragment">
     //...
