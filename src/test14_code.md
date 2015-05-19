@@ -13,17 +13,17 @@
 <br/>
 <h4>纹理：</h4>
 <select id="texture">
-    <option value="none">无</option>
-    <option selected value="galvanized">镀锌</option>
-    <option value="earth">地球</option>
+	<option value="none">无</option>
+	<option selected value="galvanized">镀锌</option>
+	<option value="earth">地球</option>
 </select>
 <br/>
 <h4>材质：</h4>
 <table style="border: 0; padding: 10px;">
-    <tr>
-        <td><b>Shininess:</b></td>
-        <td><input type="text" id="shininess" value="32.0" /></td>
-    </tr>
+	<tr>
+		<td><b>Shininess:</b></td>
+		<td><input type="text" id="shininess" value="32.0" /></td>
+	</tr>
 </table>
 <br/>
 <h4>点光:</h4>
@@ -40,12 +40,12 @@
 		<td>G: <input type="text" id="specularG" value="0.8" /></td>
 		<td>B: <input type="text" id="specularB" value="0.8" /></td>
 	</tr>
-    <tr>
-        <td><b>漫反射颜色:</b>
-        <td>R: <input type="text" id="diffuseR" value="0.8" />
-        <td>G: <input type="text" id="diffuseG" value="0.8" />
-        <td>B: <input type="text" id="diffuseB" value="0.8" />
-    </tr>
+	<tr>
+		<td><b>漫反射颜色:</b>
+		<td>R: <input type="text" id="diffuseR" value="0.8" />
+		<td>G: <input type="text" id="diffuseG" value="0.8" />
+		<td>B: <input type="text" id="diffuseB" value="0.8" />
+	</tr>
 </table>
 <h4>环境光:</h4>
 <table style="border: 0; padding: 10px;">
@@ -89,8 +89,8 @@
 	varying vec3 vTransformedNormal;
 	varying vec4 vPosition;
 
-    uniform float uMaterialShininess;
-    uniform bool uShowSpecularHighlights;
+	uniform float uMaterialShininess;
+	uniform bool uShowSpecularHighlights;
 
 	uniform bool uUseLighting;
 	uniform bool uUseTextures;
@@ -98,7 +98,7 @@
 	uniform vec3 uAmbientColor;
 
 	uniform vec3 uPointLightingLocation;
-    uniform vec3 uPointLightingSpecularColor;
+	uniform vec3 uPointLightingSpecularColor;
 	uniform vec3 uPointLightingDiffuseColor;
 
 	uniform sampler2D uSampler;
@@ -130,8 +130,8 @@
 
 			float diffuseLightWeighting = max(dot(normal, lightDirection), 0.0);
 			lightWeighting = uAmbientColor + 
-	            uPointLightingSpecularColor * specularLightWeighting +
-	            uPointLightingDiffuseColor * diffuseLightWeighting;
+				uPointLightingSpecularColor * specularLightWeighting +
+				uPointLightingDiffuseColor * diffuseLightWeighting;
 		}
 
 		vec4 fragmentColor;
@@ -214,24 +214,24 @@ var earthTexture;
 var galvanizedTexture;
 function initTextures()
 {
-    earthTexture = gl.createTexture();
-    earthTexture.image = new Image();
-    earthTexture.image.onload = function ()
-    {
-        handleLoadedTexture(earthTexture)
+	earthTexture = gl.createTexture();
+	earthTexture.image = new Image();
+	earthTexture.image.onload = function ()
+	{
+		handleLoadedTexture(earthTexture)
 		textureFlag[0] = true;
-    }
-    earthTexture.image.src = "/Public/image/earth.jpg";
+	}
+	earthTexture.image.src = "/Public/image/earth.jpg";
 
-    galvanizedTexture = gl.createTexture();
-    galvanizedTexture.image = new Image();
-    galvanizedTexture.image.onload = function ()
-    {
-        handleLoadedTexture(galvanizedTexture)
+	galvanizedTexture = gl.createTexture();
+	galvanizedTexture.image = new Image();
+	galvanizedTexture.image.onload = function ()
+	{
+		handleLoadedTexture(galvanizedTexture)
 		textureFlag[1] = true;
-    }
-    galvanizedTexture.image.src = 
-    	"/Public/image/arroway.de_metal+structure+06_d100_flat.jpg";
+	}
+	galvanizedTexture.image.src = 
+		"/Public/image/arroway.de_metal+structure+06_d100_flat.jpg";
 }
 function handleLoadedTexture(texture)
 {
@@ -318,10 +318,10 @@ function initShaders()
 		gl.getUniformLocation(shaderProgram, "uNMatrix");
 	shaderProgram.samplerUniform = 
 		gl.getUniformLocation(shaderProgram, "uSampler");
-    shaderProgram.materialShininessUniform = 
-    	gl.getUniformLocation(shaderProgram, "uMaterialShininess");
-    shaderProgram.showSpecularHighlightsUniform = 
-    	gl.getUniformLocation(shaderProgram, "uShowSpecularHighlights");
+	shaderProgram.materialShininessUniform = 
+		gl.getUniformLocation(shaderProgram, "uMaterialShininess");
+	shaderProgram.showSpecularHighlightsUniform = 
+		gl.getUniformLocation(shaderProgram, "uShowSpecularHighlights");
 	shaderProgram.useTexturesUniform = 
 		gl.getUniformLocation(shaderProgram, "uUseTextures");
 	shaderProgram.useLightingUniform = 
@@ -330,10 +330,10 @@ function initShaders()
 		gl.getUniformLocation(shaderProgram, "uAmbientColor");
 	shaderProgram.pointLightingLocationUniform  = 
 		gl.getUniformLocation(shaderProgram, "uPointLightingLocation");
-    shaderProgram.pointLightingSpecularColorUniform = 
-    	gl.getUniformLocation(shaderProgram, "uPointLightingSpecularColor");
-    shaderProgram.pointLightingDiffuseColorUniform = 
-    	gl.getUniformLocation(shaderProgram, "uPointLightingDiffuseColor");
+	shaderProgram.pointLightingSpecularColorUniform = 
+		gl.getUniformLocation(shaderProgram, "uPointLightingSpecularColor");
+	shaderProgram.pointLightingDiffuseColorUniform = 
+		gl.getUniformLocation(shaderProgram, "uPointLightingDiffuseColor");
 }
 
 var mvMatrix = mat4.create();
@@ -386,38 +386,38 @@ function loadTeapot()
 }
 function handleLoadedTeapot(teapotData)
 {
-    teapotVertexNormalBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, teapotVertexNormalBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, 
-    	new Float32Array(teapotData.vertexNormals), gl.STATIC_DRAW);
-    teapotVertexNormalBuffer.itemSize = 3;
-    teapotVertexNormalBuffer.numItems = 
-    	teapotData.vertexNormals.length / 3;
-    teapotVertexTextureCoordBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, teapotVertexTextureCoordBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, 
-    	new Float32Array(teapotData.vertexTextureCoords), gl.STATIC_DRAW);
-    teapotVertexTextureCoordBuffer.itemSize = 2;
-    teapotVertexTextureCoordBuffer.numItems = 
-    	teapotData.vertexTextureCoords.length / 2;
+	teapotVertexNormalBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, teapotVertexNormalBuffer);
+	gl.bufferData(gl.ARRAY_BUFFER, 
+		new Float32Array(teapotData.vertexNormals), gl.STATIC_DRAW);
+	teapotVertexNormalBuffer.itemSize = 3;
+	teapotVertexNormalBuffer.numItems = 
+		teapotData.vertexNormals.length / 3;
+	teapotVertexTextureCoordBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, teapotVertexTextureCoordBuffer);
+	gl.bufferData(gl.ARRAY_BUFFER, 
+		new Float32Array(teapotData.vertexTextureCoords), gl.STATIC_DRAW);
+	teapotVertexTextureCoordBuffer.itemSize = 2;
+	teapotVertexTextureCoordBuffer.numItems = 
+		teapotData.vertexTextureCoords.length / 2;
 
-    teapotVertexPositionBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, teapotVertexPositionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, 
-    	new Float32Array(teapotData.vertexPositions), gl.STATIC_DRAW);
-    teapotVertexPositionBuffer.itemSize = 3;
-    teapotVertexPositionBuffer.numItems = 
-    	teapotData.vertexPositions.length / 3;
+	teapotVertexPositionBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, teapotVertexPositionBuffer);
+	gl.bufferData(gl.ARRAY_BUFFER, 
+		new Float32Array(teapotData.vertexPositions), gl.STATIC_DRAW);
+	teapotVertexPositionBuffer.itemSize = 3;
+	teapotVertexPositionBuffer.numItems = 
+		teapotData.vertexPositions.length / 3;
 
-    teapotVertexIndexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, teapotVertexIndexBuffer);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, 
-    	new Uint16Array(teapotData.indices), gl.STATIC_DRAW);
-    teapotVertexIndexBuffer.itemSize = 1;
-    teapotVertexIndexBuffer.numItems = 
-    	teapotData.indices.length;
+	teapotVertexIndexBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, teapotVertexIndexBuffer);
+	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, 
+		new Uint16Array(teapotData.indices), gl.STATIC_DRAW);
+	teapotVertexIndexBuffer.itemSize = 1;
+	teapotVertexIndexBuffer.numItems = 
+		teapotData.indices.length;
 
-    $("#loadingtext").text("");
+	$("#loadingtext").text("");
 }
 
 var teapotAngle = 180;
@@ -433,7 +433,7 @@ function drawScene()
 		teapotVertexIndexBuffer == null) 
 	{
 		return;
-    }
+	}
 
 	mat4.perspective(pMatrix, 45, 
 		gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
