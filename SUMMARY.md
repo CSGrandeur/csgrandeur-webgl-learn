@@ -28,4 +28,5 @@
    * [加载场景，基本相机操作](src/test10_code.md)
    * [球、旋转矩阵、鼠标事件](src/test11_code.md)
    * [点光源](src/test12_code.md)
+   * 逐片元光照，多着色方案切换
 
