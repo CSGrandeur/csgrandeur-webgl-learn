@@ -310,51 +310,6 @@ function setMatrixUniforms()
 	gl.uniformMatrix3fv(shaderProgram.nMatrixUniform, false, normalMatrix);
 }
 
-var mouseDown = false;
-var lastMouseX = null;
-var lastMouseY = null;
-var moonRotationMatrix = mat4.create();
-mat4.identity(moonRotationMatrix);
-function handleMouseDown(event)
-{
-	mouseDown = true;
-	lastMouseX = event.clientX;
-	lastMouseY = event.clientY;
-}
-function handleMouseUp(event)
-{
-	mouseDown = false;
-}
-function handleMouseMove(event)
-{
-	if(!mouseDown)
-	{
-		return;
-	}
-	var newX = event.clientX;
-	var newY = event.clientY;
-	var newRotationMatrix = mat4.create();
-	mat4.identity(newRotationMatrix);
-
-	var deltaX = newX - lastMouseX;
-	mat4.rotate(newRotationMatrix, newRotationMatrix, 
-		degToRad(deltaX / 10), [0, 1, 0]);
-	var deltaY = newY - lastMouseY;
-	mat4.rotate(newRotationMatrix, newRotationMatrix, 
-		degToRad(deltaY / 10), [1, 0, 0]);
-	
-	mat4.multiply(moonRotationMatrix, newRotationMatrix, moonRotationMatrix);
-
-	lastMouseX = newX;
-	lastMouseY = newY;
-}
-function equal(a, b)
-{
-	for(var i = 0; i < a.length; i ++)
-		if(a[i] != b[i]) return false;
-	return true;
-}
-
 var cubeVertexPositionBUffer;
 var cubeVertexTextureCoordBuffer;
 var cubeVertexIndexBuffer;
