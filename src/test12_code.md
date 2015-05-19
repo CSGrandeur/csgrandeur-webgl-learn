@@ -472,7 +472,7 @@ function initBuffers()
 	cubeVertexIndexBuffer.numItems = 36;
 
 	//月亮
-		var latitudeBands = 30;
+	var latitudeBands = 30;
 	var longitudeBands = 30;
 	var radius = 2;
 	var vertexPositionData = [];
@@ -660,5 +660,6 @@ function animate()
 	}
 	lastTime = timeNow;
 }
+
 </script>
 ```
