@@ -370,7 +370,7 @@ var sphereVertexNormalBuffer;
 var sphereVertexTextureCoordBuffer;
 var sphereVertexIndexBuffer;
 
-function initBuffers(earthData)
+function initBuffers()
 {
 	var latitudeBands = 30;
 	var longitudeBands = 30;
