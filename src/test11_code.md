@@ -34,7 +34,9 @@
         <td>B: <input type="text" id="ambientB" value="0.2" /></td>
     </tr>
 </table>
-
+<br/>
+月球表面纹理图片来自：
+<a href="http://maps.jpl.nasa.gov/">the Jet Propulsion Laboratory</a>.
 <script id = "shader-vs" type = "x-shader/x-vertex">
 	attribute vec3 aVertexPosition;
 	attribute vec3 aVertexNormal;
