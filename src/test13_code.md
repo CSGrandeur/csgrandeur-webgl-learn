@@ -3,7 +3,7 @@
 ```html
 <div class="page-header"><h3>13、逐片元光照，多着色方案切换</h3></div>
 
-<canvas id = "test13-canvas" width = "400" height = "300"></canvas>
+<canvas id = "test13-canvas" width = "800" height = "600"></canvas>
 <br/>
 
 <input type="checkbox" id="lighting" checked /> 使用光照
