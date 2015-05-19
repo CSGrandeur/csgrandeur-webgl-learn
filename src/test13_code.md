@@ -568,7 +568,7 @@ function initBuffers()
 	cubeVertexIndexBuffer.numItems = 36;
 
 	//月亮
-		var latitudeBands = 30;
+	var latitudeBands = 30;
 	var longitudeBands = 30;
 	var radius = 1;
 	var vertexPositionData = [];
