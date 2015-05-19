@@ -7,3 +7,15 @@
 >![图22](../image/C1_Start/1_022.gif)
 
 >图22
+
+```javascript
+function webGLStart()
+{
+    //...
+	initTextureFramebuffer();
+	loadLaptop();
+}
+```
+先读取一个笔记本电脑模型的json文件，这个和之前的方法一样。
+
+这一节的重头戏是帧缓冲（FrameBuffer），
