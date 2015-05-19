@@ -5,9 +5,13 @@
 
 <canvas id = "test16-canvas" width = "800" height = "600"></canvas>
 <br/>
-笔记本模型来自： <a href="http://www.turbosquid.com/3d-models/apple-macbook-max-free/391534">this 3DS Max model by Xedium</a>
+笔记本模型来自： 
+<a href="http://www.turbosquid.com/3d-models/apple-macbook-max-free/391534">
+	this 3DS Max model by Xedium
+</a>
 <br/>
-月球表面纹理图片来自： <a href="http://maps.jpl.nasa.gov/">the Jet Propulsion Laboratory</a>.
+月球表面纹理图片来自：
+<a href="http://maps.jpl.nasa.gov/">the Jet Propulsion Laboratory</a>.
 <br/>
 
 <script id = "per-fragment-lighting-vs" type = "x-shader/x-vertex">
