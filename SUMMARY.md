@@ -16,6 +16,7 @@
    * [点光源](C1_Start/test12.md)
    * [逐片元光照，多着色方案切换](C1_Start/test13.md)
    * [镜面高光](C1_Start/test14.md)
+   * 镜面地图
 * [附录1：完整代码](src/README.md)
    * [三角与矩形](src/test1_code.md)
    * [添加颜色](src/test2_code.md)
