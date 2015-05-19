@@ -30,7 +30,8 @@
 <table>
 	<tr>
 		<td><b>位置:</b></td>
-		<td>X: <input type="text" id="lightPositionX" value="-10.0" /></td>
+		<td>X: <input type="text" id="lightPositionX" value="-10.0" />
+		</td>
 		<td>Y: <input type="text" id="lightPositionY" value="4.0" /></td>
 		<td>Z: <input type="text" id="lightPositionZ" value="-20.0" /></td>
 	</tr>
@@ -57,8 +58,16 @@
 	</tr>
 </table>
 <br/>
-镀锌纹理来自： <a href="http://www.arroway-textures.com/">Arroway Textures</a>.<br/>
-地球纹理来自： <a href="http://www.esa.int/esaEO/SEMGSY2IU7E_index_0.html">the European Space Agency/Envisat</a>.<br/><br/>
+镀锌纹理来自： 
+<a href="http://www.arroway-textures.com/">
+	Arroway Textures
+</a>.
+<br/>
+地球纹理来自： 
+<a href="http://www.esa.int/esaEO/SEMGSY2IU7E_index_0.html">
+	the European Space Agency/Envisat
+</a>.
+<br/>
 
 <script id = "per-fragment-lighting-vs" type = "x-shader/x-vertex">
 	attribute vec3 aVertexPosition;
@@ -492,7 +501,8 @@ function drawScene()
 		gl.bindTexture(gl.TEXTURE_2D, galvanizedTexture);
 	}
 	gl.uniform1i(shaderProgram.samplerUniform, 0);
-	gl.uniform1f(shaderProgram.materialShininessUniform, parseFloat($("#shininess").val()));
+	gl.uniform1f(shaderProgram.materialShininessUniform, 
+		parseFloat($("#shininess").val()));
 	gl.bindBuffer(gl.ARRAY_BUFFER, teapotVertexTextureCoordBuffer);
 	gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, 
 		teapotVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
