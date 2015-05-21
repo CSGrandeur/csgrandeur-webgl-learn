@@ -1,6 +1,9 @@
 # 三角与矩形
 
 ```html
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+<script src="http://cdn.bootcss.com/gl-matrix/2.2.1/gl-matrix.js"></script>
+
 <div class="page-header"><h3>1、三角与矩形</h3></div>
 
 <canvas id = "test01-canvas" width = "800" height = "600"></canvas>
