@@ -1,9 +1,4 @@
->**欢迎加入交流讨论QQ群：217160095**。一起把这本书写得更好，一起学习WebGL。
-
->我的微博[@CSGrandeur](http://www.weibo.com/2880471760)
-
-
-# CSGrandeur的WebGL学习
+# WebGL学习
 ## **简介**
 
 ### WebGL是什么
