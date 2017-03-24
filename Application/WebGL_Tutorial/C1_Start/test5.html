@@ -1,0 +1,921 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>引入纹理 | CSGrandeur的WebGL学习</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 1.0.3">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="../C1_Start/test6.html" />
+    
+    
+    <link rel="prev" href="../C1_Start/test4.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+
+        
+    <div class="book"  data-level="1.5" data-basepath=".." data-revision="1432115616617">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+    	
+    	
+    	
+
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         简介
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1" data-path="C1_Start/README.html">
+            
+                
+                    <a href="../C1_Start/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         起步
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1" data-path="C1_Start/test1.html">
+            
+                
+                    <a href="../C1_Start/test1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         三角与矩形
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="C1_Start/test2.html">
+            
+                
+                    <a href="../C1_Start/test2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         添加颜色
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.3" data-path="C1_Start/test3.html">
+            
+                
+                    <a href="../C1_Start/test3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                         一点运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.4" data-path="C1_Start/test4.html">
+            
+                
+                    <a href="../C1_Start/test4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                         来点真正的3D
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter active" data-level="1.5" data-path="C1_Start/test5.html">
+            
+                
+                    <a href="../C1_Start/test5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                         引入纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.6" data-path="C1_Start/test6.html">
+            
+                
+                    <a href="../C1_Start/test6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                         键盘交互与纹理过滤
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.7" data-path="C1_Start/test7.html">
+            
+                
+                    <a href="../C1_Start/test7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                         方向光与环境光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.8" data-path="C1_Start/test8.html">
+            
+                
+                    <a href="../C1_Start/test8.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                         深度缓冲，透明度与混合
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.9" data-path="C1_Start/test9.html">
+            
+                
+                    <a href="../C1_Start/test9.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                         优化代码结构，多物体运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.10" data-path="C1_Start/test10.html">
+            
+                
+                    <a href="../C1_Start/test10.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.10.</b>
+                        
+                         加载场景，基本相机操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.11" data-path="C1_Start/test11.html">
+            
+                
+                    <a href="../C1_Start/test11.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.11.</b>
+                        
+                         球、旋转矩阵、鼠标事件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.12" data-path="C1_Start/test12.html">
+            
+                
+                    <a href="../C1_Start/test12.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.12.</b>
+                        
+                         点光源
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.13" data-path="C1_Start/test13.html">
+            
+                
+                    <a href="../C1_Start/test13.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.13.</b>
+                        
+                         逐片元光照，多着色方案切换
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.14" data-path="C1_Start/test14.html">
+            
+                
+                    <a href="../C1_Start/test14.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.14.</b>
+                        
+                         镜面高光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.15" data-path="C1_Start/test15.html">
+            
+                
+                    <a href="../C1_Start/test15.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.15.</b>
+                        
+                         镜面地图
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.16" data-path="C1_Start/test16.html">
+            
+                
+                    <a href="../C1_Start/test16.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.16.</b>
+                        
+                         渲染到纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="src/README.html">
+            
+                
+                    <a href="../src/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         附录1：完整代码
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.1" data-path="src/test1_code.html">
+            
+                
+                    <a href="../src/test1_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                         三角与矩形
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.2" data-path="src/test2_code.html">
+            
+                
+                    <a href="../src/test2_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                         添加颜色
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3" data-path="src/test3_code.html">
+            
+                
+                    <a href="../src/test3_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         一点运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="src/test4_code.html">
+            
+                
+                    <a href="../src/test4_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         来点真正的3D
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="src/test5_code.html">
+            
+                
+                    <a href="../src/test5_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                         引入纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.6" data-path="src/test6_code.html">
+            
+                
+                    <a href="../src/test6_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                         键盘交互与纹理过滤
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.7" data-path="src/test7_code.html">
+            
+                
+                    <a href="../src/test7_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                         方向光与环境光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.8" data-path="src/test8_code.html">
+            
+                
+                    <a href="../src/test8_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                         深度缓冲，透明度与混合
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.9" data-path="src/test9_code.html">
+            
+                
+                    <a href="../src/test9_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                         优化代码结构，多物体运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.10" data-path="src/test10_code.html">
+            
+                
+                    <a href="../src/test10_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.</b>
+                        
+                         加载场景，基本相机操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.11" data-path="src/test11_code.html">
+            
+                
+                    <a href="../src/test11_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.</b>
+                        
+                         球、旋转矩阵、鼠标事件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.12" data-path="src/test12_code.html">
+            
+                
+                    <a href="../src/test12_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.12.</b>
+                        
+                         点光源
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.13" data-path="src/test13_code.html">
+            
+                
+                    <a href="../src/test13_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.13.</b>
+                        
+                         逐片元光照，多着色方案切换
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.14" data-path="src/test14_code.html">
+            
+                
+                    <a href="../src/test14_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.14.</b>
+                        
+                         镜面高光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.15" data-path="src/test15_code.html">
+            
+                
+                    <a href="../src/test15_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.15.</b>
+                        
+                         镜面地图
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.16" data-path="src/test16_code.html">
+            
+                
+                    <a href="../src/test16_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.16.</b>
+                        
+                         渲染到纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Published using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">Twitter</button>
+                <button type="button" data-sharing="google-plus" class="button">Google</button>
+                <button type="button" data-sharing="facebook" class="button">Facebook</button>
+                <button type="button" data-sharing="weibo" class="button">Weibo</button>
+                <button type="button" data-sharing="instapaper" class="button">Instapaper</button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >CSGrandeur的WebGL学习</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-gitbook_13">
+                    
+                        <h2 id="">引入纹理</h2>
+<p>三维模型表面有了自己的纹理，桌子才成为桌子，房子才成为房子。</p>
+<p>纹理是用体现表面特征的图片贴上去的，就像装修贴墙纸一样。图片可以拉伸扭曲，假设我们用一张图贴一面墙，给出图左上贴墙左上，图右上贴墙右上……四个角都对应上，图就贴上去了。而位置的关系，用坐标来表示。</p>
+<p>这一节我们学习如何贴纹理，为了减少些工作量，先把上一节代码所有四面体有关的部分删除，来给正方体贴纹理。</p>
+<p>效果如图5。</p>
+<blockquote>
+<p><img src="../image/C1_Start/1_005.gif" alt="图5"></p>
+<p>图5</p>
+</blockquote>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webGLStart</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-comment">////initBuffers();</span>
+    initTexture();
+    <span class="hljs-comment">////gl.clearColor(0.0, 0.0, 0.0, 1.0);</span>
+    <span class="hljs-comment">////gl.enable(gl.DEPTH_TEST);</span>
+    <span class="hljs-comment">//setTimeout("tick()", 100);</span>
+    <span class="hljs-comment">//tick();</span>
+}
+</code></pre>
+<p>一开始加入纹理的初始化函数。tick()我们知道是执行动画的部分，直接用tick()的话，我看到了一个WARNING：</p>
+<blockquote>
+<p>[.WebGLRenderingContext]RENDER WARNING: texture bound to texture unit 0 is not renderable. It maybe non-power-of-2 and have incompatible texture filtering or is not &#39;texture complete&#39;</p>
+</blockquote>
+<p>我猜应该是JS异步执行这个特点造成的，纹理加载需要时间，在纹理还没加载完成的时候就开始绘制了，于是有了这个提示。用JS的setTimeout简单处理了一下，大意就是等“一小会儿”再绘制。不过这个方法还是不稳定，网页响应慢的话还是会WARNING。最后把tick()改到下面读取纹理时加载图片的响应函数里了。</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myTexture;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initTexture</span><span class="hljs-params">()</span>
+</span>{
+    myTexture = gl.createTexture();
+    myTexture.image = <span class="hljs-keyword">new</span> Image();
+    myTexture.image.onload = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
+    </span>{
+        handleLoadedTexture(myTexture);
+        tick();
+    }
+    myTexture.image.src = <span class="hljs-string">"/Public/image/mytexture.jpg"</span>;
+}
+</code></pre>
+<p>先用createTexture()建立一个纹理对象给myTexture，再让myTexture随身携带它的纹理的图片，是一个JS的image对象。为这个image对象的onload事件指定触发我们处理纹理的函数handleLoadedTexture()。tick()是从webGLStart()挪过来的，保证加载图片后再tick()，避免那个WARNING。</p>
+<p>之后设置image的地址，可以是自己服务器的相对地址也可以是网络上图片的地址。指定地址后浏览器就开始在后台异步获取这个图片，获取成功后就触发了onload事件。</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleLoadedTexture</span><span class="hljs-params">(texture)</span>
+</span>{
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+</code></pre>
+<p>gl.bindTexture和gl.bindBuffer相似，绑定texture为“当前纹理”，接下来没有新的绑定的话，对纹理的处理都是对texture的处理。</p>
+<pre><code class="lang-javascript">    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, <span class="hljs-number">1</span>);
+</code></pre>
+<p>gl.pixelstorei用于设置像素存储模式，第一个参数表示读入纹理的图片垂直翻转，这个是因为图片和纹理的坐标系统不同，翻过来就对应了，后面写纹理坐标会好写点。后一个参数表示存储器中每个像素行有1个字节对齐，我们先不用管。</p>
+<pre><code class="lang-javascript">    gl.texImage2D(gl.TEXTURE_2D, <span class="hljs-number">0</span>, gl.RGBA, gl.RGBA,
+        gl.UNSIGNED_BYTE, texture.image);
+</code></pre>
+<p>gl.texImage2D，将刚读入的图片传入显卡纹理缓存，参数从前往后为：使用图片类型、细节层次（以后说）、显卡中储存格式（重复两次，以后说）、每个通道的规格（存储R、G、B等的数据类型）、图像对象本身。</p>
+<pre><code class="lang-javascript">    gl.texParameteri(gl.TEXTURE_2D,
+        gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D,
+        gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+</code></pre>
+<p>这两句分别表示目标区域比纹理图片大了或小了的时候如何处理，TEXTURE_MAG_FILTER和TEXTURE_MIN_FILTER分别是放大和缩小。NEAREST是使用纹理坐标中最接近的像素颜色作为需要绘制的颜色，速度快，效果看起来可能会有好多“块块”，不平滑。找个尺寸小点的图片当纹理，对比下gl.LINEAR试试看。</p>
+<pre><code class="lang-javascript">    gl.bindTexture(gl.TEXTURE_2D, <span class="hljs-literal">null</span>);
+}
+</code></pre>
+<p>最后把“当前纹理”绑定为空。这是不必要的，但是一种好习惯。</p>
+<p>接着我们要在initBuffers()中设置纹理坐标。既然有纹理贴图，就不需要之前的颜色了，把设置颜色有关的变量和函数都替换为纹理相关的。</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> cubeVertexTextureCoordBuffer;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initBuffers</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//...</span>
+    cubeVertexTextureCoordBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
+    textureCoords = [
+                     <span class="hljs-comment">// 正面</span>
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+
+                     <span class="hljs-comment">// 背面</span>
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+
+                     <span class="hljs-comment">// 顶部</span>
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+
+                     <span class="hljs-comment">// 底部</span>
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+
+                     <span class="hljs-comment">// 右侧面</span>
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+
+                     <span class="hljs-comment">// 左侧面</span>
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                    ];
+    gl.bufferData(gl.ARRAY_BUFFER, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(textureCoords), gl.STATIC_DRAW);
+    cubeVertexTextureCoordBuffer.itemSize = <span class="hljs-number">2</span>;
+    cubeVertexTextureCoordBuffer.numItems = <span class="hljs-number">24</span>;
+    <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p>和之前设置点坐标、点颜色类似，纹理坐标也是点的一个属性（attribute），纹理坐标看做纹理图片上的一个比例，左下角是(0, 0)，右上角是(1, 1)，每个三维点对应纹理图片上按比例换算的一个位置，点与点之间也在这个比例上自动插值，显卡就知道了纹理图片与三维形状每个位置的对应关系。</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> xRot = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> yRot = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> zRot = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawScene</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">////mat4.translate(mvMatrix, mvMatrix, [0.0, 0.0, -5.0]);</span>
+    mat4.rotate(mvMatrix, mvMatrix, degToRad(xRot), [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]);
+    mat4.rotate(mvMatrix, mvMatrix, degToRad(yRot), [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]);
+    mat4.rotate(mvMatrix, mvMatrix, degToRad(zRot), [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]);
+    <span class="hljs-comment">////gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);</span>
+    <span class="hljs-comment">////gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute,</span>
+    <span class="hljs-comment">////    cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);</span>
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
+    gl.vertexAttribPointer(shaderProgram.textureCoordAttribute,
+        cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, myTexture);
+    gl.uniform1i(shaderProgram.samplerUniform, <span class="hljs-number">0</span>);
+    <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p>改了一下旋转的方式，这个不做重点，应该可以理解。</p>
+<p>对于textureCoordAttribute，和点坐标一样把纹理坐标派给shader中的对应变量。</p>
+<p>还记得setMatrixUniforms()吗，那里我们用的uniformMatrix4fv()，uniform1i()也类似的，“uniform”后面的“1i”表示参数的类型，告诉显卡我们用的0号纹理，下面修改GLSL代码来看在shader里是怎样的。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">id</span> = "<span class="hljs-attribute">shader-vs</span>" <span class="hljs-attribute">type</span> = "<span class="hljs-attribute">x-shader</span>/<span class="hljs-attribute">x-vertex</span>"&gt;</span><span class="javascript">
+    attribute vec3 aVertexPosition;
+    attribute vec2 aTextureCoord;<span class="hljs-comment">//new</span>
+
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+
+    varying vec2 vTextureCoord;<span class="hljs-comment">//new</span>
+    <span class="hljs-keyword">void</span> main(<span class="hljs-keyword">void</span>)
+    {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, <span class="hljs-number">1.0</span>);
+        vTextureCoord = aTextureCoord;<span class="hljs-comment">//new</span>
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>顶点着色器中，我们用纹理代替了之前的颜色，和颜色属性（attribute）类似的，传给下一个着色器的过程中纹理坐标会自动插值。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">id</span> = "<span class="hljs-attribute">shader-fs</span>" <span class="hljs-attribute">type</span> = "<span class="hljs-attribute">x-shader</span>/<span class="hljs-attribute">x-fragment</span>"&gt;</span><span class="javascript">
+    precision mediump float;
+    varying vec2 vTextureCoord;
+    uniform sampler2D uSampler;
+    <span class="hljs-keyword">void</span> main(<span class="hljs-keyword">void</span>)
+    {
+        gl_FragColor =
+            texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>片元着色器中，得到了插值后的纹理坐标，通过texture2D()来通过纹理获取这个片元的颜色。uSampler是我们前面用uniform1i()给出的纹理编号，这里的s和t是别名，用x和y也是可以的。</p>
+<p>于是我们完成了对模型的贴图。</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../C1_Start/test4.html" class="navigation navigation-prev " aria-label="Previous page: 来点真正的3D"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../C1_Start/test6.html" class="navigation navigation-next " aria-label="Next page: 键盘交互与纹理过滤"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

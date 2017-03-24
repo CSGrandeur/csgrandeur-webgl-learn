@@ -1,0 +1,1203 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>键盘交互与纹理过滤 | CSGrandeur的WebGL学习</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 1.0.3">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="../src/test7_code.html" />
+    
+    
+    <link rel="prev" href="../src/test5_code.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+
+        
+    <div class="book"  data-level="2.6" data-basepath=".." data-revision="1432115616617">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+    	
+    	
+    	
+
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         简介
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1" data-path="C1_Start/README.html">
+            
+                
+                    <a href="../C1_Start/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         起步
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1" data-path="C1_Start/test1.html">
+            
+                
+                    <a href="../C1_Start/test1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         三角与矩形
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="C1_Start/test2.html">
+            
+                
+                    <a href="../C1_Start/test2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         添加颜色
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.3" data-path="C1_Start/test3.html">
+            
+                
+                    <a href="../C1_Start/test3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                         一点运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.4" data-path="C1_Start/test4.html">
+            
+                
+                    <a href="../C1_Start/test4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                         来点真正的3D
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.5" data-path="C1_Start/test5.html">
+            
+                
+                    <a href="../C1_Start/test5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                         引入纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.6" data-path="C1_Start/test6.html">
+            
+                
+                    <a href="../C1_Start/test6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                         键盘交互与纹理过滤
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.7" data-path="C1_Start/test7.html">
+            
+                
+                    <a href="../C1_Start/test7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                         方向光与环境光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.8" data-path="C1_Start/test8.html">
+            
+                
+                    <a href="../C1_Start/test8.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                         深度缓冲，透明度与混合
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.9" data-path="C1_Start/test9.html">
+            
+                
+                    <a href="../C1_Start/test9.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                         优化代码结构，多物体运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.10" data-path="C1_Start/test10.html">
+            
+                
+                    <a href="../C1_Start/test10.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.10.</b>
+                        
+                         加载场景，基本相机操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.11" data-path="C1_Start/test11.html">
+            
+                
+                    <a href="../C1_Start/test11.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.11.</b>
+                        
+                         球、旋转矩阵、鼠标事件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.12" data-path="C1_Start/test12.html">
+            
+                
+                    <a href="../C1_Start/test12.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.12.</b>
+                        
+                         点光源
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.13" data-path="C1_Start/test13.html">
+            
+                
+                    <a href="../C1_Start/test13.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.13.</b>
+                        
+                         逐片元光照，多着色方案切换
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.14" data-path="C1_Start/test14.html">
+            
+                
+                    <a href="../C1_Start/test14.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.14.</b>
+                        
+                         镜面高光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.15" data-path="C1_Start/test15.html">
+            
+                
+                    <a href="../C1_Start/test15.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.15.</b>
+                        
+                         镜面地图
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.16" data-path="C1_Start/test16.html">
+            
+                
+                    <a href="../C1_Start/test16.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.16.</b>
+                        
+                         渲染到纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="src/README.html">
+            
+                
+                    <a href="../src/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         附录1：完整代码
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.1" data-path="src/test1_code.html">
+            
+                
+                    <a href="../src/test1_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                         三角与矩形
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.2" data-path="src/test2_code.html">
+            
+                
+                    <a href="../src/test2_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                         添加颜色
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3" data-path="src/test3_code.html">
+            
+                
+                    <a href="../src/test3_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         一点运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="src/test4_code.html">
+            
+                
+                    <a href="../src/test4_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         来点真正的3D
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="src/test5_code.html">
+            
+                
+                    <a href="../src/test5_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                         引入纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter active" data-level="2.6" data-path="src/test6_code.html">
+            
+                
+                    <a href="../src/test6_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                         键盘交互与纹理过滤
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.7" data-path="src/test7_code.html">
+            
+                
+                    <a href="../src/test7_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                         方向光与环境光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.8" data-path="src/test8_code.html">
+            
+                
+                    <a href="../src/test8_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                         深度缓冲，透明度与混合
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.9" data-path="src/test9_code.html">
+            
+                
+                    <a href="../src/test9_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                         优化代码结构，多物体运动
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.10" data-path="src/test10_code.html">
+            
+                
+                    <a href="../src/test10_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.</b>
+                        
+                         加载场景，基本相机操作
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.11" data-path="src/test11_code.html">
+            
+                
+                    <a href="../src/test11_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.</b>
+                        
+                         球、旋转矩阵、鼠标事件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.12" data-path="src/test12_code.html">
+            
+                
+                    <a href="../src/test12_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.12.</b>
+                        
+                         点光源
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.13" data-path="src/test13_code.html">
+            
+                
+                    <a href="../src/test13_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.13.</b>
+                        
+                         逐片元光照，多着色方案切换
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.14" data-path="src/test14_code.html">
+            
+                
+                    <a href="../src/test14_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.14.</b>
+                        
+                         镜面高光
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.15" data-path="src/test15_code.html">
+            
+                
+                    <a href="../src/test15_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.15.</b>
+                        
+                         镜面地图
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.16" data-path="src/test16_code.html">
+            
+                
+                    <a href="../src/test16_code.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.16.</b>
+                        
+                         渲染到纹理
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Published using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">Twitter</button>
+                <button type="button" data-sharing="google-plus" class="button">Google</button>
+                <button type="button" data-sharing="facebook" class="button">Facebook</button>
+                <button type="button" data-sharing="weibo" class="button">Weibo</button>
+                <button type="button" data-sharing="instapaper" class="button">Instapaper</button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >CSGrandeur的WebGL学习</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-gitbook_31">
+                    
+                        <h1 id="">键盘交互与纹理过滤</h1>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"page-header"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>6、键盘输入与纹理过滤<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">canvas</span> <span class="hljs-attribute">id</span> = "<span class="hljs-attribute">test06-canvas</span>" <span class="hljs-attribute">width</span> = "<span class="hljs-attribute">800</span>" <span class="hljs-attribute">height</span> = "<span class="hljs-attribute">600</span>"&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">canvas</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>逗号/句号 控制 靠近/远离<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>WSAD键控制四个方向旋转速度<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>F键控制纹理过滤类型切换<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">id</span> = "<span class="hljs-attribute">shader-vs</span>" <span class="hljs-attribute">type</span> = "<span class="hljs-attribute">x-shader</span>/<span class="hljs-attribute">x-vertex</span>"&gt;</span><span class="javascript">
+    attribute vec3 aVertexPosition;
+    attribute vec2 aTextureCoord;
+
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+
+    varying vec2 vTextureCoord;
+    <span class="hljs-keyword">void</span> main(<span class="hljs-keyword">void</span>)
+    {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, <span class="hljs-number">1.0</span>);
+        vTextureCoord = aTextureCoord;
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">id</span> = "<span class="hljs-attribute">shader-fs</span>" <span class="hljs-attribute">type</span> = "<span class="hljs-attribute">x-shader</span>/<span class="hljs-attribute">x-fragment</span>"&gt;</span><span class="javascript">
+    precision mediump float;
+    varying vec2 vTextureCoord;
+    uniform sampler2D uSampler;
+    <span class="hljs-keyword">void</span> main(<span class="hljs-keyword">void</span>)
+    {
+        gl_FragColor = 
+            texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript">
+    requestAnimFrame = <span class="hljs-built_in">window</span>.requestAnimationFrame || 
+        <span class="hljs-built_in">window</span>.mozRequestAnimationFrame || 
+        <span class="hljs-built_in">window</span>.webkitRequestAnimationFrame || 
+        <span class="hljs-built_in">window</span>.msRequestAnimationFrame || 
+        <span class="hljs-built_in">window</span>.oRequestAnimationFrame || 
+        <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(callback)</span> </span>{ setTimeout(callback, <span class="hljs-number">1000</span> / <span class="hljs-number">60</span>); }; 
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript">
+
+$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>
+</span>{
+    webGLStart();
+});
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webGLStart</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">var</span> canvas = $(<span class="hljs-string">"#test06-canvas"</span>)[<span class="hljs-number">0</span>];
+    initGL(canvas);
+    initShaders();
+    initBuffers();
+    initTexture();
+
+    gl.clearColor(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>);
+    gl.enable(gl.DEPTH_TEST);
+
+<span class="hljs-comment">//    setTimeout("tick()", 100);</span>
+
+    $(<span class="hljs-built_in">document</span>).keydown(handleKeyDown);
+    $(<span class="hljs-built_in">document</span>).keyup(handleKeyUp);
+}
+<span class="hljs-keyword">var</span> crateTextures = <span class="hljs-built_in">Array</span>();
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initTexture</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">var</span> crateImage = <span class="hljs-keyword">new</span> Image();
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i ++)
+    {
+        <span class="hljs-keyword">var</span> texture = gl.createTexture();
+        texture.image = crateImage;
+        crateTextures.push(texture);
+    }
+    crateImage.onload = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
+    </span>{
+        handleLoadedTexture(crateTextures);
+        tick();
+    }
+    crateImage.src = <span class="hljs-string">"/Public/image/crate.gif"</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleLoadedTexture</span><span class="hljs-params">(textures)</span>
+</span>{
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, <span class="hljs-number">1</span>);
+
+    gl.bindTexture(gl.TEXTURE_2D, textures[<span class="hljs-number">0</span>]);
+    gl.texImage2D(gl.TEXTURE_2D, <span class="hljs-number">0</span>, gl.RGBA, gl.RGBA, 
+        gl.UNSIGNED_BYTE, textures[<span class="hljs-number">0</span>].image);
+    gl.texParameteri(gl.TEXTURE_2D, 
+        gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, 
+        gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+
+    gl.bindTexture(gl.TEXTURE_2D, textures[<span class="hljs-number">1</span>]);
+    gl.texImage2D(gl.TEXTURE_2D, <span class="hljs-number">0</span>, gl.RGBA, gl.RGBA, 
+        gl.UNSIGNED_BYTE, textures[<span class="hljs-number">1</span>].image);
+    gl.texParameteri(gl.TEXTURE_2D, 
+        gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, 
+        gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+
+    gl.bindTexture(gl.TEXTURE_2D, textures[<span class="hljs-number">2</span>]);
+    gl.texImage2D(gl.TEXTURE_2D, <span class="hljs-number">0</span>, gl.RGBA, gl.RGBA, 
+        gl.UNSIGNED_BYTE, textures[<span class="hljs-number">2</span>].image);
+    gl.texParameteri(gl.TEXTURE_2D, 
+        gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, 
+        gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST);
+
+    gl.generateMipmap(gl.TEXTURE_2D);
+
+    gl.bindTexture(gl.TEXTURE_2D, <span class="hljs-literal">null</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tick</span><span class="hljs-params">()</span>
+</span>{
+    requestAnimFrame(tick);
+    handleKeys();
+    drawScene();
+    animate();
+}
+
+<span class="hljs-keyword">var</span> gl;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initGL</span><span class="hljs-params">(canvas)</span>
+</span>{
+    <span class="hljs-keyword">try</span>
+    {
+        gl = canvas.getContext(<span class="hljs-string">"webgl"</span>) || canvas.getContext(<span class="hljs-string">"experimental-webgl"</span>);
+        gl.viewportWidth = canvas.width;
+        gl.viewportHeight = canvas.height;
+    }<span class="hljs-keyword">catch</span>(e){}
+    <span class="hljs-keyword">if</span>(!gl)
+    {
+        alert(<span class="hljs-string">"无法初始化“WebGL”。"</span>);
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getShader</span><span class="hljs-params">(gl, id)</span>
+</span>{
+    <span class="hljs-keyword">var</span> shaderScript = $(<span class="hljs-string">"#"</span> + id);
+    <span class="hljs-keyword">if</span>(!shaderScript.length)
+    {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+    <span class="hljs-keyword">var</span> str = shaderScript.text();
+
+    <span class="hljs-keyword">var</span> shader;
+    <span class="hljs-keyword">if</span>(shaderScript[<span class="hljs-number">0</span>].type == <span class="hljs-string">"x-shader/x-fragment"</span>)
+    {
+        shader = gl.createShader(gl.FRAGMENT_SHADER);
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(shaderScript[<span class="hljs-number">0</span>].type == <span class="hljs-string">"x-shader/x-vertex"</span>)
+    {
+        shader = gl.createShader(gl.VERTEX_SHADER);
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+    gl.shaderSource(shader, str);
+    gl.compileShader(shader);
+    <span class="hljs-keyword">if</span>(!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
+    {
+        alert(gl.getShaderInfoLog(shader));
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+    <span class="hljs-keyword">return</span> shader;
+}
+
+<span class="hljs-keyword">var</span> shaderProgram;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initShaders</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">var</span> fragmentShader = getShader(gl, <span class="hljs-string">"shader-fs"</span>);
+    <span class="hljs-keyword">var</span> vertexShader = getShader(gl, <span class="hljs-string">"shader-vs"</span>);
+
+    shaderProgram = gl.createProgram();
+    gl.attachShader(shaderProgram, vertexShader);
+    gl.attachShader(shaderProgram, fragmentShader);
+    gl.linkProgram(shaderProgram);
+
+    <span class="hljs-keyword">if</span>(!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS))
+    {
+        alert(<span class="hljs-string">"无法初始化“Shader”。"</span>);
+    }
+    gl.useProgram(shaderProgram);
+
+    shaderProgram.vertexPositionAttribute = 
+        gl.getAttribLocation(shaderProgram, <span class="hljs-string">"aVertexPosition"</span>);
+    gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
+
+    shaderProgram.textureCoordAttribute = 
+        gl.getAttribLocation(shaderProgram, <span class="hljs-string">"aTextureCoord"</span>);
+    gl.enableVertexAttribArray(shaderProgram.textureCoordAttribute);
+
+    shaderProgram.pMatrixUniform = 
+        gl.getUniformLocation(shaderProgram, <span class="hljs-string">"uPMatrix"</span>);
+    shaderProgram.mvMatrixUniform = 
+        gl.getUniformLocation(shaderProgram, <span class="hljs-string">"uMVMatrix"</span>);
+    shaderProgram.samplerUniform = 
+        gl.getUniformLocation(shaderProgram, <span class="hljs-string">"uSampler"</span>);
+}
+
+
+<span class="hljs-keyword">var</span> mvMatrix = mat4.create();
+
+<span class="hljs-keyword">var</span> mvMatrixStack = [];
+
+<span class="hljs-keyword">var</span> pMatrix = mat4.create();
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mvPushMatrix</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">var</span> copy = mat4.clone(mvMatrix);
+    mvMatrixStack.push(copy);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mvPopMatrix</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span>(mvMatrixStack.length == <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-keyword">throw</span> <span class="hljs-string">"不合法的矩阵出栈操作!"</span>;
+    }
+    mvMatrix = mvMatrixStack.pop();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMatrixUniforms</span><span class="hljs-params">()</span>
+</span>{
+    gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, <span class="hljs-literal">false</span>, pMatrix);
+    gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, <span class="hljs-literal">false</span>, mvMatrix);
+}
+
+
+<span class="hljs-keyword">var</span> cubeVertexPositionBUffer;
+<span class="hljs-keyword">var</span> cubeVertexTextureCoordBuffer;
+<span class="hljs-keyword">var</span> cubeVertexIndexBuffer;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initBuffers</span><span class="hljs-params">()</span>
+</span>{
+    cubeVertexPositionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
+    vertices = [
+                <span class="hljs-comment">// 正面</span>
+                -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+
+                <span class="hljs-comment">// 背面</span>
+                -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+
+                <span class="hljs-comment">// 顶部</span>
+                -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+
+                <span class="hljs-comment">// 底部</span>
+                -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+
+                <span class="hljs-comment">// 右侧面</span>
+                 <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                 <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+
+                <span class="hljs-comment">// 左侧面</span>
+                -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                -<span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>,
+                -<span class="hljs-number">1.0</span>,  <span class="hljs-number">1.0</span>, -<span class="hljs-number">1.0</span>,
+                ];
+    gl.bufferData(gl.ARRAY_BUFFER, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(vertices), 
+        gl.STATIC_DRAW);
+    cubeVertexPositionBuffer.itemSize = <span class="hljs-number">3</span>;
+    cubeVertexPositionBuffer.numItems = <span class="hljs-number">24</span>;
+
+    cubeVertexTextureCoordBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
+    textureCoords = [
+                     <span class="hljs-comment">// 正面</span>
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+
+                     <span class="hljs-comment">// 背面</span>
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+
+                     <span class="hljs-comment">// 顶部</span>
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+
+                     <span class="hljs-comment">// 底部</span>
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+
+                     <span class="hljs-comment">// 右侧面</span>
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+
+                     <span class="hljs-comment">// 左侧面</span>
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>,
+                     <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>,
+                     <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>,
+                    ];
+    gl.bufferData(gl.ARRAY_BUFFER, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(textureCoords), 
+        gl.STATIC_DRAW);
+    cubeVertexTextureCoordBuffer.itemSize = <span class="hljs-number">2</span>;
+    cubeVertexTextureCoordBuffer.numItems = <span class="hljs-number">24</span>;
+
+    cubeVertexIndexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
+    <span class="hljs-keyword">var</span> cubeVertexIndices = 
+        [
+          <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>,      <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>,    <span class="hljs-comment">// 正面</span>
+          <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>,      <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>,    <span class="hljs-comment">// 背面</span>
+          <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>,     <span class="hljs-number">8</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>,  <span class="hljs-comment">// 顶部</span>
+          <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>,   <span class="hljs-number">12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>, <span class="hljs-comment">// 底部</span>
+          <span class="hljs-number">16</span>, <span class="hljs-number">17</span>, <span class="hljs-number">18</span>,   <span class="hljs-number">16</span>, <span class="hljs-number">18</span>, <span class="hljs-number">19</span>, <span class="hljs-comment">// 右侧面</span>
+          <span class="hljs-number">20</span>, <span class="hljs-number">21</span>, <span class="hljs-number">22</span>,   <span class="hljs-number">20</span>, <span class="hljs-number">22</span>, <span class="hljs-number">23</span>  <span class="hljs-comment">// 左侧面</span>
+        ];
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, 
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint16Array</span>(cubeVertexIndices), gl.STATIC_DRAW);
+    cubeVertexIndexBuffer.itemSize = <span class="hljs-number">1</span>;
+    cubeVertexIndexBuffer.numItems = <span class="hljs-number">36</span>;
+}
+
+<span class="hljs-keyword">var</span> xRot = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> xSpeed = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">var</span> yRot = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> ySpeed = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">var</span> z = -<span class="hljs-number">5.0</span>;
+
+<span class="hljs-keyword">var</span> filter = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">var</span> currentlyPressedKeys = {};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleKeyDown</span><span class="hljs-params">(event)</span>
+</span>{
+    currentlyPressedKeys[event.keyCode] = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>.fromCharCode(event.keyCode) == <span class="hljs-string">"F"</span>)
+    {
+        filter += <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span>(filter == <span class="hljs-number">3</span>)
+        {
+            filter = <span class="hljs-number">0</span>;
+        }
+    }
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleKeyUp</span><span class="hljs-params">(event)</span>
+</span>{
+    currentlyPressedKeys[event.keyCode] = <span class="hljs-literal">false</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleKeys</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span>(currentlyPressedKeys[<span class="hljs-number">190</span>])
+    {
+        <span class="hljs-comment">//"."/"&gt;"句号键</span>
+        z -= <span class="hljs-number">0.05</span>;
+    }
+    <span class="hljs-keyword">if</span>(currentlyPressedKeys[<span class="hljs-number">188</span>])
+    {
+        <span class="hljs-comment">//","/"&lt;"逗号键</span>
+        z += <span class="hljs-number">0.05</span>;
+    }
+    <span class="hljs-keyword">if</span>(currentlyPressedKeys[<span class="hljs-number">65</span>])
+    {
+        <span class="hljs-comment">//A</span>
+        ySpeed -= <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">if</span>(currentlyPressedKeys[<span class="hljs-number">68</span>])
+    {
+        <span class="hljs-comment">//D</span>
+        ySpeed += <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">if</span>(currentlyPressedKeys[<span class="hljs-number">87</span>])
+    {
+        <span class="hljs-comment">//W</span>
+        xSpeed -= <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">if</span>(currentlyPressedKeys[<span class="hljs-number">83</span>])
+    {
+        <span class="hljs-comment">//S</span>
+        xSpeed += <span class="hljs-number">1</span>;
+    }    
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawScene</span><span class="hljs-params">()</span>
+</span>{
+    gl.viewport(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, gl.viewportWidth, gl.viewportHeight);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    mat4.perspective(pMatrix, <span class="hljs-number">45</span>, gl.viewportWidth / 
+        gl.viewportHeight, <span class="hljs-number">0.1</span>, <span class="hljs-number">100.0</span>);
+
+    mat4.identity(mvMatrix);
+
+    mat4.translate(mvMatrix, mvMatrix, [<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, z]);
+
+    mat4.rotate(mvMatrix, mvMatrix, degToRad(xRot), [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]);
+    mat4.rotate(mvMatrix, mvMatrix, degToRad(yRot), [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
+    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
+        cubeVertexPositionBuffer.itemSize, gl.FLOAT, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
+    gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, 
+        cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, crateTextures[filter]);
+    gl.uniform1i(shaderProgram.samplerUniform, <span class="hljs-number">0</span>);
+
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
+    setMatrixUniforms();
+    gl.drawElements(gl.TRIANGLES, 
+        cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, <span class="hljs-number">0</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">degToRad</span><span class="hljs-params">(degrees)</span>
+</span>{
+    <span class="hljs-keyword">return</span> degrees * <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">180</span>;
+}
+<span class="hljs-keyword">var</span> lastTime = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">var</span> timeNow = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();
+    <span class="hljs-keyword">if</span>(lastTime != <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-keyword">var</span> elapsed = timeNow - lastTime;
+
+        xRot += (xSpeed * elapsed) / <span class="hljs-number">1000.0</span>;
+        yRot += (ySpeed * elapsed) / <span class="hljs-number">1000.0</span>;
+    }
+    lastTime = timeNow;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../src/test5_code.html" class="navigation navigation-prev " aria-label="Previous page: 引入纹理"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../src/test7_code.html" class="navigation navigation-next " aria-label="Next page: 方向光与环境光"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
