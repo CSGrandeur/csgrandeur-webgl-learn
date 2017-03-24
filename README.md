@@ -36,10 +36,7 @@ HTML5是当前HTML的新标准，其中一个特性就可以用JavaScript写调�
 
 代码演示：http://csgrandeur.github.io/WebGL_Learn_Code
 
-初学者，难免有错误与疏漏，欢迎指正，~~我会及时修改更新~~。
-
-时光荏苒，造化弄人，我现在不搞这个了，也不会再更新了，大家加油`^_^`。
-
+初学者，难免有错误与疏漏，~~欢迎指正，我会及时修改更新~~。
 ### 参考
 [Learning WebGL](http://learningwebgl.com)
 他的网站是：http://learningwebgl.com 。
@@ -47,3 +44,5 @@ HTML5是当前HTML的新标准，其中一个特性就可以用JavaScript写调�
 
 
                                 By CSGrandeur, 2015年4月28日
+
+时光荏苒，造化弄人，我现在不搞这个了，也不会再更新了，大家加油`^_^`。
